@@ -153,10 +153,15 @@ namespace _Scripts.Units.Player
         public void SelectGadget(int number)
         {
             currentlySelectedGadget = gadgets[number];
+            Debug.Log("Selected "+currentlySelectedGadget);
         }
 
         public void SetGadget(string positionName)
         {
+            //TODO
+            // while (transform.Find(positionName).childCount > 1) {
+            //     Destroy(transform.GetChild(0).gameObject);
+            // }
             switch (positionName)
             {
                 case "Top Left":

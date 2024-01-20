@@ -16,6 +16,8 @@ namespace _Scripts.Units.Player
         public GameObject[] gadgets;
 
         public GameObject currentlySelectedGadget;
+        public int currentlySelectedGadgetNumber;
+
         private Rigidbody2D rb;
 
         public float mass = 0f;
@@ -164,9 +166,12 @@ namespace _Scripts.Units.Player
         {
 
             currentlySelectedGadget = gadgets[number];
+            currentlySelectedGadgetNumber = number;
             Debug.Log("Selected "+currentlySelectedGadget);
             //TODO
             // audio manager plays a select sound
+            FindObjectOfType<AudioManager>().Play("SelectGadgetSound");
+
         }
 
         public void SetGadget(string positionName)
@@ -181,42 +186,56 @@ namespace _Scripts.Units.Player
                 Debug.Log("il faut sélectionner un objet à mettre sur la position " + positionName);
                 return;
             }
-            else
-            {
-                switch (positionName)
-                {
-                    case "Top Left":
-                        Instantiate(currentlySelectedGadget,topLeft);
-                        break;
-                    case "Top":
-                        Instantiate(currentlySelectedGadget,top);
-                        break;
-                    case "Top Right":
-                        Instantiate(currentlySelectedGadget,topRight);
-                        break;
-                    case "Front":
-                        Instantiate(currentlySelectedGadget,front);
-                        break;
-                    case "Middle":
-                        Instantiate(currentlySelectedGadget,middle);
-                        break;
-                    case "Back":
-                        Instantiate(currentlySelectedGadget,back);
-                        break;
-                    case "Bottom Left":
-                        Instantiate(currentlySelectedGadget,bottomLeft);
-                        break;
-                    case "Bottom":
-                        Instantiate(currentlySelectedGadget,bottom);
-                        break;
-                    case "Bottom Right":
-                        Instantiate(currentlySelectedGadget,bottomRight);
-                        break;
-                }
 
+            switch (currentlySelectedGadgetNumber)
+            {
+                case 0:
+                    FindObjectOfType<AudioManager>().Play("WoodSound");
+                    break;
+                case 1:
+                    FindObjectOfType<AudioManager>().Play("MotorSound");
+                    break;
+                case 2:
+                    FindObjectOfType<AudioManager>().Play("BalloonSound");
+                    break;
+                case 3:
+                    FindObjectOfType<AudioManager>().Play("UmbrellaSound");
+                    break;
+                case 4:
+                    FindObjectOfType<AudioManager>().Play("WheelSound");
+                    break;
             }
 
-            
+            switch (positionName)
+            {  
+                case "Top Left":
+                    Instantiate(currentlySelectedGadget,topLeft);
+                    break;
+                case "Top":
+                    Instantiate(currentlySelectedGadget,top);
+                    break;
+                case "Top Right":
+                    Instantiate(currentlySelectedGadget,topRight);
+                    break;
+                case "Front":
+                    Instantiate(currentlySelectedGadget,front);
+                    break;
+                case "Middle":
+                    Instantiate(currentlySelectedGadget,middle);
+                    break;
+                case "Back":
+                    Instantiate(currentlySelectedGadget,back);
+                    break;
+                case "Bottom Left":
+                    Instantiate(currentlySelectedGadget,bottomLeft);
+                    break;
+                case "Bottom":
+                    Instantiate(currentlySelectedGadget,bottom);
+                    break;
+                case "Bottom Right":
+                    Instantiate(currentlySelectedGadget,bottomRight);
+                    break;
+            }
         }
         
     }

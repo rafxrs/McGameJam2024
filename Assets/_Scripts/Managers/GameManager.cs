@@ -24,6 +24,7 @@ public class GameManager : StaticInstance<GameManager>
     public GameObject createVehiclePanel;
     public GameObject selectGadgetPanel;
     public GameObject levelCompletePanel;
+    public GameObject startButton;
     public GameObject[] Stars = new GameObject[3];
     public GameObject eButton;
     Player player;
@@ -231,6 +232,7 @@ public class GameManager : StaticInstance<GameManager>
         createVehiclePanel.SetActive(false);
         selectGadgetPanel.SetActive(false);
         pausePanel.SetActive(false);
+        startButton.SetActive(false);
         isPaused=false;
         Time.timeScale =1;
     }

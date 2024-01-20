@@ -11,12 +11,24 @@ namespace _Scripts.Units.Player
     {
         public LayerMask platformLayerMask;
         public CharacterController2D _characterController;
+        public GameObject[] gadgets;
+
+        public GameObject currentlySelectedGadget;
         
         public float speed = 20f;
         float _horizontalInput;
         int _currentHealth;
         bool _jump;
         bool _isDead;
+
+        private Transform top;
+        private Transform topLeft;
+        private Transform topRight;
+        private Transform front;
+        private Transform back;
+        private Transform bottomRight;
+        private Transform bottomLeft;
+        private Transform bottom;
 
         //-------------------------------------------------------------------------------------------//
 
@@ -25,6 +37,15 @@ namespace _Scripts.Units.Player
         // START
         void Start()
         {
+            // top = transform.Find("Top");
+            //TODO faire pour chaque transform
+            // top = transform.Find("Top");
+            // top = transform.Find("Top");
+            // top = transform.Find("Top");
+            // top = transform.Find("Top");
+            // top = transform.Find("Top");
+            bottomLeft = transform.Find("Bottom Left");
+            bottomRight = transform.Find("Bottom Right");
         }
 
         //-------------------------------------------------------------------------------------------//
@@ -67,10 +88,6 @@ namespace _Scripts.Units.Player
         public void OnLanding()
         {
         }
-        public void OnRoll()
-        {
-        }
-
         public bool isGrounded()
         {
             CircleCollider2D collider = GetComponent<CircleCollider2D>();
@@ -113,7 +130,6 @@ namespace _Scripts.Units.Player
             }
         }
         
-        //-------------------------------------------------------------------------------------------//
         void Die()
         {
             Invoke("GameOverSequence",1.5f);
@@ -133,6 +149,37 @@ namespace _Scripts.Units.Player
         // {
         //     _uiManager.LevelComplete();
         // }
+
+        public void SelectGadget(int number)
+        {
+            currentlySelectedGadget = gadgets[number];
+        }
+
+        public void SetGadget(string positionName)
+        {
+            switch (positionName)
+            {
+                case "Top Left":
+                    break;
+                case "Top":
+                    break;
+                case "Top Right":
+                    break;
+                case "Front":
+                    break;
+                case "Back":
+                    break;
+                case "Bottom Left":
+                    Instantiate(currentlySelectedGadget,bottomLeft);
+                    break;
+                case "Bottom":
+                    break;
+                case "Bottom Right":
+                    Instantiate(currentlySelectedGadget,bottomRight);
+                    break;
+                    
+            }
+        }
         
     }
 }

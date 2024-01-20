@@ -15,6 +15,8 @@ namespace _Scripts.Units.Player
         public GameObject[] gadgets;
 
         public GameObject currentlySelectedGadget;
+        public int currentlySelectedGadgetNumber;
+
         private Rigidbody2D rb;
 
         public float mass = 0f;
@@ -163,9 +165,12 @@ namespace _Scripts.Units.Player
         {
 
             currentlySelectedGadget = gadgets[number];
+            currentlySelectedGadgetNumber = number;
             Debug.Log("Selected "+currentlySelectedGadget);
             //TODO
             // audio manager plays a select sound
+            FindObjectOfType<AudioManager>().Play("SelectGadgetSound");
+
         }
 
         public void SetGadget(string positionName)
@@ -179,6 +184,25 @@ namespace _Scripts.Units.Player
             if (currentlySelectedGadget == null) {
                 Debug.Log("il faut sélectionner un objet à mettre sur la position " + positionName);
                 return;
+            }
+
+            switch (currentlySelectedGadgetNumber)
+            {
+                case 0:
+                    FindObjectOfType<AudioManager>().Play("WoodSound");
+                    break;
+                case 1:
+                    FindObjectOfType<AudioManager>().Play("MotorSound");
+                    break;
+                case 2:
+                    FindObjectOfType<AudioManager>().Play("BalloonSound");
+                    break;
+                case 3:
+                    FindObjectOfType<AudioManager>().Play("UmbrellaSound");
+                    break;
+                case 4:
+                    FindObjectOfType<AudioManager>().Play("WheelSound");
+                    break;
             }
 
             switch (positionName)

@@ -140,7 +140,5 @@ public class CharacterController2D : MonoBehaviour
 
 		// Multiply the player's x local scale by -1.
 		transform.Rotate(0f,180,0f);
-		transform.Find("MissingMana").Rotate(0f,180,0f);
-		transform.Find("MissingKey").Rotate(0f,180,0f);
 	}
 }

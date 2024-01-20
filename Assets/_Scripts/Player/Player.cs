@@ -233,6 +233,7 @@ namespace _Scripts.Units.Player
                     else
                     {
                         topLeft =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                        Set_Linked(topLeft);
                     }
                     break;
                 case "Top":
@@ -249,6 +250,7 @@ namespace _Scripts.Units.Player
                     else
                     {
                         top =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                        Set_Linked(top);
                     }
                     break;
                 case "Top Right":
@@ -265,6 +267,7 @@ namespace _Scripts.Units.Player
                     else
                     {
                         topRight =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                        Set_Linked(topRight);
                     }
                     break;
                 case "Front":
@@ -281,6 +284,7 @@ namespace _Scripts.Units.Player
                     else
                     {
                         front =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                        Set_Linked(front);
                     }
                     break;
                 case "Middle":
@@ -297,6 +301,7 @@ namespace _Scripts.Units.Player
                     else
                     {
                         middle =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                        Set_Linked(middle);
                     }
                     break;
                 case "Back":
@@ -313,6 +318,7 @@ namespace _Scripts.Units.Player
                     else
                     {
                         back =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                        Set_Linked(back);
                     }
                     break;
                 case "Bottom Left":
@@ -329,6 +335,7 @@ namespace _Scripts.Units.Player
                     else
                     {
                         bottomLeft =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                        Set_Linked(bottomLeft);
                     }
                     break;
                 case "Bottom":
@@ -345,6 +352,7 @@ namespace _Scripts.Units.Player
                     else
                     {
                         bottom =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                        Set_Linked(bottom);
                     }
                     break;
                 case "Bottom Right":
@@ -360,12 +368,28 @@ namespace _Scripts.Units.Player
                     }
                     else
                     {
-                        bottomRight =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                        bottomRight = Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                        Set_Linked(bottomRight);
                     }
                     break;
+            }  
+        } 
+
+        void Set_Linked(GameObject object_created)
+        {
+            if (object_created == null) {
+                Debug.LogError("Set_Linked : object_created shouldn't be null");
+                return;
             }
-            
-        }
-        
+            Rigidbody2D object_created_rb = object_created.GetComponent<Rigidbody2D>();
+            if (object_created_rb == null) {
+                Debug.LogError("Set_Linked : Rigidbody2D components not found on GameObjects!");
+                return;
+            }
+
+            FixedJoint2D fixedJoint = object_created_rb.AddComponent<FixedJoint2D>();
+            // Connect the FixedJoint2D to the second GameObject's Rigidbody2D
+            fixedJoint.connectedBody = rb;
+        } 
     }
 }

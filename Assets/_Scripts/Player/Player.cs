@@ -26,6 +26,7 @@ namespace _Scripts.Units.Player
         private Transform topLeft;
         private Transform topRight;
         private Transform front;
+        private Transform middle;
         private Transform back;
         private Transform bottomRight;
         private Transform bottomLeft;
@@ -42,6 +43,7 @@ namespace _Scripts.Units.Player
             topLeft = transform.Find("Top Left");
             topRight = transform.Find("Top Right");
             front = transform.Find("Front");
+            middle = transform.Find("Middle");
             back = transform.Find("Back");
             bottomLeft = transform.Find("Bottom Left");
             bottomRight = transform.Find("Bottom Right");
@@ -181,6 +183,9 @@ namespace _Scripts.Units.Player
                     break;
                 case "Front":
                     Instantiate(currentlySelectedGadget,front);
+                    break;
+                case "Middle":
+                    Instantiate(currentlySelectedGadget,middle);
                     break;
                 case "Back":
                     Instantiate(currentlySelectedGadget,back);

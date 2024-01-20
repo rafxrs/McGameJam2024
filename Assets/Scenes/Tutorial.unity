@@ -7513,7 +7513,7 @@ MonoBehaviour:
   sounds:
   - name: Theme
     clip: {fileID: 8300000, guid: 818105da4bab3461aa18de5f514ea182, type: 3}
-    volume: 1
+    volume: 0.65
     volumeVariance: 0.29
     pitch: 1
     pitchVariance: 0.23
@@ -7567,7 +7567,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: SelectGadgetSound
     clip: {fileID: 8300000, guid: a4f667a704569450e993ded8404f9477, type: 3}
-    volume: 0.15
+    volume: 0.33
     volumeVariance: 0.24
     pitch: 0.61
     pitchVariance: 0.34

@@ -22,6 +22,7 @@ public class GameManager : StaticInstance<GameManager>
     public GameObject pausePanel;
     public GameObject gameOverPanel;
     public GameObject createVehiclePanel;
+    public GameObject selectGadgetPanel;
     public GameObject levelCompletePanel;
     public GameObject[] Stars = new GameObject[3];
     public GameObject eButton;
@@ -137,10 +138,10 @@ public class GameManager : StaticInstance<GameManager>
         // Do some start setup, could be environment, cinematics etc
 
         // reset stars GFX
-        foreach (GameObject obj in Stars)
-        {
-            obj.SetActive(false);
-        }
+        // foreach (GameObject obj in Stars)
+        // {
+        //     obj.SetActive(false);
+        // }
 
         if (mustCreateVehicle)
         {
@@ -228,6 +229,7 @@ public class GameManager : StaticInstance<GameManager>
     {
         Invoke("EnablePlayerControl",0.1f);
         createVehiclePanel.SetActive(false);
+        selectGadgetPanel.SetActive(false);
         pausePanel.SetActive(false);
         isPaused=false;
         Time.timeScale =1;

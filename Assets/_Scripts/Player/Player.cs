@@ -152,16 +152,22 @@ namespace _Scripts.Units.Player
 
         public void SelectGadget(int number)
         {
+
             currentlySelectedGadget = gadgets[number];
             Debug.Log("Selected "+currentlySelectedGadget);
         }
 
         public void SetGadget(string positionName)
         {
-            //TODO
-            // while (transform.Find(positionName).childCount > 1) {
-            //     Destroy(transform.GetChild(0).gameObject);
-            // }
+            if (transform.Find(positionName).childCount > 0) {
+                Destroy(transform.Find(positionName).GetChild(0).gameObject);
+            }
+
+            if (currentlySelectedGadget == null) {
+                Debug.Log("il faut sélectionner un objet à mettre sur la position " + positionName);
+                return;
+            }
+
             switch (positionName)
             {
                 case "Top Left":
@@ -187,7 +193,7 @@ namespace _Scripts.Units.Player
                     break;
                 case "Bottom Right":
                     Instantiate(currentlySelectedGadget,bottomRight);
-                    break; 
+                    break;
             }
         }
         

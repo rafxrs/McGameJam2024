@@ -7,7 +7,6 @@ public class UIManager : MonoBehaviour
 {
     GameObject containers;
     GameManager gameManager;
-    public int coins;
     // Start is called before the first frame update
     void Start()
     {        

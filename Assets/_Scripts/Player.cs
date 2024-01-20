@@ -10,7 +10,7 @@ namespace _Scripts.Units.Player
     public class Player : MonoBehaviour
     {
         public LayerMask platformLayerMask;
-        private CharacterController2D _characterController;
+        public CharacterController2D _characterController;
         
         public float speed = 20f;
         float _horizontalInput;
@@ -25,7 +25,6 @@ namespace _Scripts.Units.Player
         // START
         void Start()
         {
-            _characterController = GetComponent<CharacterController2D>();
         }
 
         //-------------------------------------------------------------------------------------------//

@@ -28391,7 +28391,70 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixerGroup: {fileID: 0}
-  sounds: []
+  sounds:
+  - name: Theme
+    clip: {fileID: 8300000, guid: 818105da4bab3461aa18de5f514ea182, type: 3}
+    volume: 0.65
+    volumeVariance: 0.29
+    pitch: 1
+    pitchVariance: 0.23
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: WoodSound
+    clip: {fileID: 8300000, guid: 209c4279aa43d4fb8836096a3f551779, type: 3}
+    volume: 0.37
+    volumeVariance: 0.19
+    pitch: 0.99
+    pitchVariance: 0.19
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: MotorSound
+    clip: {fileID: 8300000, guid: 32cc70fc0d16b4b7eb040b64ac67b2c6, type: 3}
+    volume: 0.29
+    volumeVariance: 0.26
+    pitch: 1.41
+    pitchVariance: 0.24
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: BalloonSound
+    clip: {fileID: 8300000, guid: 44d3084d52735467a964c26e2b40573a, type: 3}
+    volume: 0.31
+    volumeVariance: 0.27
+    pitch: 0.99
+    pitchVariance: 0.34
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: UmbrellaSound
+    clip: {fileID: 8300000, guid: f0131b8f06e91443db79594d055f0a74, type: 3}
+    volume: 0.21
+    volumeVariance: 0.32
+    pitch: 0.99
+    pitchVariance: 0.34
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: WheelSound
+    clip: {fileID: 8300000, guid: fa6197a26fd714f38a06528241d3ee38, type: 3}
+    volume: 0.15
+    volumeVariance: 0.24
+    pitch: 0.61
+    pitchVariance: 0.18
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: SelectGadgetSound
+    clip: {fileID: 8300000, guid: a4f667a704569450e993ded8404f9477, type: 3}
+    volume: 0.33
+    volumeVariance: 0.24
+    pitch: 0.61
+    pitchVariance: 0.34
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!1 &1703630012
 GameObject:
   m_ObjectHideFlags: 0

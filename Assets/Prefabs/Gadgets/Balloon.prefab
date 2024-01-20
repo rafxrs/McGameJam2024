@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4087463327470770504}
   - component: {fileID: 3918997248660804134}
   - component: {fileID: 4977606105870307842}
+  - component: {fileID: 8707858695195290750}
   m_Layer: 0
   m_Name: Balloon
   m_TagString: Player
@@ -175,4 +176,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e3444ed32e900448fc5565ef2d37a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gadgetScriptableObject: {fileID: 0}
+  gadgetScriptableObject: {fileID: 11400000, guid: e8ef5ba2828847346af7012e6cffe527, type: 2}
+--- !u!50 &8707858695195290750
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105323644472231821}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

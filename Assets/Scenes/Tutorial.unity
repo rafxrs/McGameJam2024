@@ -28326,7 +28326,6 @@ MonoBehaviour:
   createVehiclePanel: {fileID: 255718223838145362}
   selectGadgetPanel: {fileID: 7456393596941717627}
   levelCompletePanel: {fileID: 96770461999873182}
-  startButton: {fileID: 5771334944338193350}
   Stars:
   - {fileID: 0}
   - {fileID: 0}
@@ -29151,6 +29150,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1955039899}
+    - target: {fileID: 2535242181259336279, guid: ad2c0b98f0106d5498cd2fc5be910652, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 841539420}
+    - target: {fileID: 2535242181259336279, guid: ad2c0b98f0106d5498cd2fc5be910652, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
+      objectReference: {fileID: 0}
     - target: {fileID: 4133406593347736194, guid: ad2c0b98f0106d5498cd2fc5be910652, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -29287,11 +29294,6 @@ PrefabInstance:
 --- !u!1 &3045467401968788616 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8694759424187036657, guid: ad2c0b98f0106d5498cd2fc5be910652, type: 3}
-  m_PrefabInstance: {fileID: 2238192334319093841}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5771334944338193350 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 215529961310125247, guid: ad2c0b98f0106d5498cd2fc5be910652, type: 3}
   m_PrefabInstance: {fileID: 2238192334319093841}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6237466474053579683

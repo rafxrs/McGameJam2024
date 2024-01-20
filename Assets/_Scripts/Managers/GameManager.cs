@@ -26,7 +26,6 @@ public class GameManager : StaticInstance<GameManager>
     public GameObject levelCompletePanel;
     public GameObject startButton;
     public GameObject[] Stars = new GameObject[3];
-    public GameObject eButton;
     Player player;
     public GameState State { get; private set; }
 //-------------------------------------------------------------------------------------------//

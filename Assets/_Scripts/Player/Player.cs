@@ -30,15 +30,28 @@ namespace _Scripts.Units.Player
         bool _jump;
         bool _isDead;
 
-        private Transform top;
-        private Transform topLeft;
-        private Transform topRight;
-        private Transform front;
-        private Transform middle;
-        private Transform back;
-        private Transform bottomRight;
-        private Transform bottomLeft;
-        private Transform bottom;
+        private Transform topPos;
+        private Transform topLeftPos;
+        private Transform topRightPos;
+        private Transform frontPos;
+        private Transform middlePos;
+        private Transform backPos;
+        private Transform bottomRightPos;
+        private Transform bottomLeftPos;
+        private Transform bottomPos;
+        
+        private GameObject top;
+        private GameObject topLeft;
+        private GameObject topRight;
+        private GameObject front;
+        private GameObject middle;
+        private GameObject back;
+        private GameObject bottomRight;
+        private GameObject bottomLeft;
+        private GameObject bottom;
+        
+        Transform instantiateAt;
+        private Vector3 instantiatePos;
 
         //-------------------------------------------------------------------------------------------//
 
@@ -47,15 +60,15 @@ namespace _Scripts.Units.Player
         // START
         void Start()
         {
-            top = transform.Find("Top");
-            topLeft = transform.Find("Top Left");
-            topRight = transform.Find("Top Right");
-            front = transform.Find("Front");
-            middle = transform.Find("Middle");
-            back = transform.Find("Back");
-            bottomLeft = transform.Find("Bottom Left");
-            bottomRight = transform.Find("Bottom Right");
-            bottom = transform.Find("Bottom");
+            topPos = transform.Find("Top");
+            topLeftPos = transform.Find("Top Left");
+            topRightPos = transform.Find("Top Right");
+            frontPos = transform.Find("Front");
+            middlePos = transform.Find("Middle");
+            backPos = transform.Find("Back");
+            bottomLeftPos = transform.Find("Bottom Left");
+            bottomRightPos = transform.Find("Bottom Right");
+            bottomPos = transform.Find("Bottom");
 
             rb = GetComponent<Rigidbody2D>();
         }
@@ -176,8 +189,6 @@ namespace _Scripts.Units.Player
 
         public void SetGadget(string positionName)
         {
-            //TODO
-            // audio manager plays a sound when you equip the corresponding object, e.g. if balloons play balloon equip
             if (transform.Find(positionName).childCount > 0) {
                 Destroy(transform.Find(positionName).GetChild(0).gameObject);
             }
@@ -205,37 +216,155 @@ namespace _Scripts.Units.Player
                     FindObjectOfType<AudioManager>().Play("WheelSound");
                     break;
             }
-
+            
             switch (positionName)
             {  
                 case "Top Left":
-                    Instantiate(currentlySelectedGadget,topLeft);
+                    if (topLeft != null)
+                    {
+                        Destroy(topLeft);
+                    }
+                    instantiateAt = topLeftPos;
+                    instantiatePos = instantiateAt.transform.position;
+                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    {
+                        topLeft = Instantiate(currentlySelectedGadget,instantiateAt);
+                    }
+                    else
+                    {
+                        topLeft =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                    }
                     break;
                 case "Top":
-                    Instantiate(currentlySelectedGadget,top);
+                    if (top != null)
+                    {
+                        Destroy(top);
+                    }
+                    instantiateAt = topPos;
+                    instantiatePos = instantiateAt.transform.position;
+                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    {
+                        top =Instantiate(currentlySelectedGadget,instantiateAt);
+                    }
+                    else
+                    {
+                        top =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                    }
                     break;
                 case "Top Right":
-                    Instantiate(currentlySelectedGadget,topRight);
+                    if (topRight != null)
+                    {
+                        Destroy(topRight);
+                    }
+                    instantiateAt = topRightPos;
+                    instantiatePos = instantiateAt.transform.position;
+                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    {
+                        topRight =Instantiate(currentlySelectedGadget,instantiateAt);
+                    }
+                    else
+                    {
+                        topRight =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                    }
                     break;
                 case "Front":
-                    Instantiate(currentlySelectedGadget,front);
+                    if (front != null)
+                    {
+                        Destroy(front);
+                    }
+                    instantiateAt = frontPos;
+                    instantiatePos = instantiateAt.transform.position;
+                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    {
+                        front =Instantiate(currentlySelectedGadget,instantiateAt);
+                    }
+                    else
+                    {
+                        front =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                    }
                     break;
                 case "Middle":
-                    Instantiate(currentlySelectedGadget,middle);
+                    if (middle != null)
+                    {
+                        Destroy(middle);
+                    }
+                    instantiateAt = middlePos;
+                    instantiatePos = instantiateAt.transform.position;
+                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    {
+                        middle =Instantiate(currentlySelectedGadget,instantiateAt);
+                    }
+                    else
+                    {
+                        middle =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                    }
                     break;
                 case "Back":
-                    Instantiate(currentlySelectedGadget,back);
+                    if (back != null)
+                    {
+                        Destroy(back);
+                    }
+                    instantiateAt = backPos;
+                    instantiatePos = instantiateAt.transform.position;
+                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    {
+                        back =Instantiate(currentlySelectedGadget,instantiateAt);
+                    }
+                    else
+                    {
+                        back =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                    }
                     break;
                 case "Bottom Left":
-                    Instantiate(currentlySelectedGadget,bottomLeft);
+                    if (bottomLeft != null)
+                    {
+                        Destroy(bottomLeft);
+                    }
+                    instantiateAt = bottomLeftPos;
+                    instantiatePos = instantiateAt.transform.position;
+                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    {
+                        bottomLeft =Instantiate(currentlySelectedGadget,instantiateAt);
+                    }
+                    else
+                    {
+                        bottomLeft =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                    }
                     break;
                 case "Bottom":
-                    Instantiate(currentlySelectedGadget,bottom);
+                    if (bottom != null)
+                    {
+                        Destroy(bottom);
+                    }
+                    instantiateAt = bottomPos;
+                    instantiatePos = instantiateAt.transform.position;
+                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    {
+                        bottom =Instantiate(currentlySelectedGadget,instantiateAt);
+                    }
+                    else
+                    {
+                        bottom =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                    }
                     break;
                 case "Bottom Right":
-                    Instantiate(currentlySelectedGadget,bottomRight);
+                    if (bottomRight != null)
+                    {
+                        Destroy(bottomRight);
+                    }
+                    instantiateAt = bottomRightPos;
+                    instantiatePos = instantiateAt.transform.position;
+                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    {
+                        bottomRight =Instantiate(currentlySelectedGadget,instantiateAt);
+                    }
+                    else
+                    {
+                        bottomRight =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                    }
                     break;
             }
+            
         }
         
     }

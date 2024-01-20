@@ -13,6 +13,7 @@ public class ScriptableGadget : ScriptableObject
 
     [System.Serializable]
     public enum GadgetType {
+        Wood,
         Umbrella,
         Tire,
         Rocket,
@@ -27,11 +28,9 @@ public class ScriptableGadget : ScriptableObject
     public struct Stats
     {
         public float mass;
-        public bool canFly;
+        public bool isPlayer;
         public float airDrag;
         public float reduceGravity;
-        public bool isForBoost;
-        public bool isForJump;
         public float jumpForce;
     }
 }

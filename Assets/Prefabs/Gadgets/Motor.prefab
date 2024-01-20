@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7376851541582179859}
   - component: {fileID: 3498800935637563003}
   - component: {fileID: 8565977841880883007}
+  - component: {fileID: 6650130698879867608}
   m_Layer: 0
   m_Name: Motor
   m_TagString: Player
@@ -144,3 +145,16 @@ PolygonCollider2D:
       - {x: 0.17999999, y: -0.32999998}
       - {x: 0.35999998, y: -0.29}
   m_UseDelaunayMesh: 0
+--- !u!114 &6650130698879867608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2715857772548040086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e3444ed32e900448fc5565ef2d37a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gadgetScriptableObject: {fileID: 11400000, guid: fb5cda8fc4ac00243a27088e222950e7, type: 2}

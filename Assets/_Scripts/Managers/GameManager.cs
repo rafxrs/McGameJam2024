@@ -192,8 +192,7 @@ public class GameManager : StaticInstance<GameManager>
 //-------------------------------------------------------------------------------------------//
     public void LevelComplete()
     {
-        HideEButton();
-        stars =1;
+        // stars =1;
         // if (player.coins >= 100)
         // {
         //     stars+=1;
@@ -202,23 +201,23 @@ public class GameManager : StaticInstance<GameManager>
         // {
         //     stars +=1;
         // }
-        switch (stars)
-        {
-            case 1:
-                Stars[0].SetActive(true);
-                break;
-            case 2:
-                Stars[0].SetActive(true);
-                Stars[1].SetActive(true);
-                break;
-            case 3:
-                Stars[0].SetActive(true);
-                Stars[1].SetActive(true);
-                Stars[2].SetActive(true);
-                break;
-            default:
-                break;
-        }
+        // switch (stars)
+        // {
+        //     case 1:
+        //         Stars[0].SetActive(true);
+        //         break;
+        //     case 2:
+        //         Stars[0].SetActive(true);
+        //         Stars[1].SetActive(true);
+        //         break;
+        //     case 3:
+        //         Stars[0].SetActive(true);
+        //         Stars[1].SetActive(true);
+        //         Stars[2].SetActive(true);
+        //         break;
+        //     default:
+        //         break;
+        // }
         Time.timeScale =0;
         playerControl = false;
         isGameOver = true;
@@ -272,16 +271,7 @@ public class GameManager : StaticInstance<GameManager>
         SceneManager.LoadScene(0);
     }
 //-------------------------------------------------------------------------------------------//
-    public void ShowEButton()
-        {
-        eButton.SetActive(true);
-        }
-    public void HideEButton()
-        {
-        eButton.SetActive(false);
-        }
-    
-//-------------------------------------------------------------------------------------------//
+
     public void ExitGame()
     {
         Application.Quit();

@@ -21,26 +21,19 @@ public class DetectPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // playerDetected = Physics2D.OverlapBox(areaPos.position, new Vector2(areaWidth, areaHeight),0,whatIsPlayer);
-
         if (playerDetected)
         {
             // do action
             switch (action)
             {
                 case Action.EndOfLevel:
-                    gameManager.ShowEButton();
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        Debug.Log("Finishing level");
-                        gameManager.LevelComplete(); 
-                        Destroy(this.gameObject);
-                    }
+                    Debug.Log("Finishing level");
+                    gameManager.LevelComplete(); 
+                    // Destroy(this.gameObject);
                     break;
                 default:
                     break;
             }
-            
         }
     }
     [System.Serializable]
@@ -52,7 +45,7 @@ public class DetectPlayer : MonoBehaviour
         Teleport,
 
     }
-    void OnTriggerStay2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
@@ -66,7 +59,6 @@ public class DetectPlayer : MonoBehaviour
         {
             Debug.Log("Player left the collider");
             playerDetected = false;
-            gameManager.HideEButton();
         }
     }
 }

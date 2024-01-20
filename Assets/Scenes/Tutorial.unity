@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -4433,6 +4433,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 237435214}
     m_Modifications:
+    - target: {fileID: 1381202560110359413, guid: 3033a5f6b2e01724db7a33ee5678cc31, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661758478068182139, guid: 3033a5f6b2e01724db7a33ee5678cc31, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498694196596234130, guid: 3033a5f6b2e01724db7a33ee5678cc31, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946387676980071776, guid: 3033a5f6b2e01724db7a33ee5678cc31, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 5142217051304067180, guid: 3033a5f6b2e01724db7a33ee5678cc31, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -4464,6 +4480,10 @@ PrefabInstance:
     - target: {fileID: 5142217051304067180, guid: 3033a5f6b2e01724db7a33ee5678cc31, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699158071680226044, guid: 3033a5f6b2e01724db7a33ee5678cc31, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 6064890411019126228, guid: 3033a5f6b2e01724db7a33ee5678cc31, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -4580,6 +4600,10 @@ PrefabInstance:
     - target: {fileID: 7895143968555587012, guid: 3033a5f6b2e01724db7a33ee5678cc31, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905583813135425160, guid: 3033a5f6b2e01724db7a33ee5678cc31, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

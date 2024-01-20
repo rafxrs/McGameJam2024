@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace _Scripts.Units.Player
@@ -37,15 +38,14 @@ namespace _Scripts.Units.Player
         // START
         void Start()
         {
-            // top = transform.Find("Top");
-            //TODO faire pour chaque transform
-            // top = transform.Find("Top");
-            // top = transform.Find("Top");
-            // top = transform.Find("Top");
-            // top = transform.Find("Top");
-            // top = transform.Find("Top");
+            top = transform.Find("Top");
+            topLeft = transform.Find("Top Left");
+            topRight = transform.Find("Top Right");
+            front = transform.Find("Front");
+            back = transform.Find("Back");
             bottomLeft = transform.Find("Bottom Left");
             bottomRight = transform.Find("Bottom Right");
+            bottom = transform.Find("Bottom");
         }
 
         //-------------------------------------------------------------------------------------------//
@@ -160,24 +160,29 @@ namespace _Scripts.Units.Player
             switch (positionName)
             {
                 case "Top Left":
+                    Instantiate(currentlySelectedGadget,topLeft);
                     break;
                 case "Top":
+                    Instantiate(currentlySelectedGadget,top);
                     break;
                 case "Top Right":
+                    Instantiate(currentlySelectedGadget,topRight);
                     break;
                 case "Front":
+                    Instantiate(currentlySelectedGadget,front);
                     break;
                 case "Back":
+                    Instantiate(currentlySelectedGadget,back);
                     break;
                 case "Bottom Left":
                     Instantiate(currentlySelectedGadget,bottomLeft);
                     break;
                 case "Bottom":
+                    Instantiate(currentlySelectedGadget,bottom);
                     break;
                 case "Bottom Right":
                     Instantiate(currentlySelectedGadget,bottomRight);
-                    break;
-                    
+                    break; 
             }
         }
         

@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 8755049163406209922}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -505,13 +505,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9473c1f8fd82645498d51fc501dcb53c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 600
+  m_JumpForce: 400
   m_CrouchSpeed: 0
   m_MovementSmoothing: 0.05
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 128
   m_GroundCheck: {fileID: 5184257228401848992}
   m_CeilingCheck: {fileID: 3314292078203219384}
   m_CrouchDisableCollider: {fileID: 0}

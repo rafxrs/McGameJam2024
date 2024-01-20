@@ -17,9 +17,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _advancedStats:
-    mass: 20
+    mass: 50
     canFly: 0
     airDrag: 0
+    reduceGravity: 0
     isForBoost: 0
     isForJump: 0
     jumpForce: 0

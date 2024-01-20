@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gadget : MonoBehaviour
 {
-    public ScriptableObject GadgetScriptableObject;
+    public ScriptableGadget gadgetScriptableObject;
     
     // Start is called before the first frame update
     void Start()

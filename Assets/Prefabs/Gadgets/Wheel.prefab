@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5288613329667112595}
   - component: {fileID: 126086304624407369}
   - component: {fileID: 1786084916257949672}
+  - component: {fileID: 7756652815994434908}
   m_Layer: 0
   m_Name: Wheel
   m_TagString: Untagged
@@ -151,6 +152,19 @@ PolygonCollider2D:
       - {x: 0.29999998, y: -0.38}
       - {x: 0.42999998, y: -0.22}
   m_UseDelaunayMesh: 0
+--- !u!114 &7756652815994434908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2582525383493004361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e3444ed32e900448fc5565ef2d37a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gadgetScriptableObject: {fileID: 11400000, guid: cebc06f761536a5419b4d7910af92d8f, type: 2}
 --- !u!1 &8373604434867426740
 GameObject:
   m_ObjectHideFlags: 0

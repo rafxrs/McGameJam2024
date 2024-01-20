@@ -175,4 +175,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e3444ed32e900448fc5565ef2d37a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GadgetScriptableObject: {fileID: 0}
+  GadgetScriptableObject: {fileID: 11400000, guid: e8ef5ba2828847346af7012e6cffe527, type: 2}

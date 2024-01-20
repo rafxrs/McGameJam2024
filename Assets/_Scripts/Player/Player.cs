@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _Scripts.Units.Player
@@ -180,39 +181,42 @@ namespace _Scripts.Units.Player
                 Debug.Log("il faut sélectionner un objet à mettre sur la position " + positionName);
                 return;
             }
-
-            switch (positionName)
+            else
             {
-                case "Top Left":
-                    Instantiate(currentlySelectedGadget,topLeft);
-                    break;
-                case "Top":
-                    Instantiate(currentlySelectedGadget,top);
-                    break;
-                case "Top Right":
-                    Instantiate(currentlySelectedGadget,topRight);
-                    break;
-                case "Front":
-                    Instantiate(currentlySelectedGadget,front);
-                    break;
-                case "Middle":
-                    Instantiate(currentlySelectedGadget,middle);
-                    break;
-                case "Back":
-                    Instantiate(currentlySelectedGadget,back);
-                    break;
-                case "Bottom Left":
-                    Instantiate(currentlySelectedGadget,bottomLeft);
-                    break;
-                case "Bottom":
-                    Instantiate(currentlySelectedGadget,bottom);
-                    break;
-                case "Bottom Right":
-                    Instantiate(currentlySelectedGadget,bottomRight);
-                    break;
+                switch (positionName)
+                {
+                    case "Top Left":
+                        Instantiate(currentlySelectedGadget,topLeft);
+                        break;
+                    case "Top":
+                        Instantiate(currentlySelectedGadget,top);
+                        break;
+                    case "Top Right":
+                        Instantiate(currentlySelectedGadget,topRight);
+                        break;
+                    case "Front":
+                        Instantiate(currentlySelectedGadget,front);
+                        break;
+                    case "Middle":
+                        Instantiate(currentlySelectedGadget,middle);
+                        break;
+                    case "Back":
+                        Instantiate(currentlySelectedGadget,back);
+                        break;
+                    case "Bottom Left":
+                        Instantiate(currentlySelectedGadget,bottomLeft);
+                        break;
+                    case "Bottom":
+                        Instantiate(currentlySelectedGadget,bottom);
+                        break;
+                    case "Bottom Right":
+                        Instantiate(currentlySelectedGadget,bottomRight);
+                        break;
+                }
+
             }
 
-            // rb.mass = rb.mass + currentlySelectedGadget.GetComponent<Gadget>().GadgetScriptableObject.advancedStats;
+            
         }
         
     }

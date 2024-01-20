@@ -15,8 +15,13 @@ namespace _Scripts.Units.Player
         public GameObject[] gadgets;
 
         public GameObject currentlySelectedGadget;
-        
+        private Rigidbody2D rb;
+
+        public float mass = 0f;
         public float speed = 20f;
+        public float airDrag = 0f;
+        public float adherence;
+        
         float _horizontalInput;
         int _currentHealth;
         bool _jump;
@@ -48,6 +53,8 @@ namespace _Scripts.Units.Player
             bottomLeft = transform.Find("Bottom Left");
             bottomRight = transform.Find("Bottom Right");
             bottom = transform.Find("Bottom");
+
+            rb = GetComponent<Rigidbody2D>();
         }
 
         //-------------------------------------------------------------------------------------------//
@@ -157,10 +164,14 @@ namespace _Scripts.Units.Player
 
             currentlySelectedGadget = gadgets[number];
             Debug.Log("Selected "+currentlySelectedGadget);
+            //TODO
+            // audio manager plays a select sound
         }
 
         public void SetGadget(string positionName)
         {
+            //TODO
+            // audio manager plays a sound when you equip the corresponding object, e.g. if balloons play balloon equip
             if (transform.Find(positionName).childCount > 0) {
                 Destroy(transform.Find(positionName).GetChild(0).gameObject);
             }
@@ -200,6 +211,8 @@ namespace _Scripts.Units.Player
                     Instantiate(currentlySelectedGadget,bottomRight);
                     break;
             }
+
+            // rb.mass = rb.mass + currentlySelectedGadget.GetComponent<Gadget>().GadgetScriptableObject.advancedStats;
         }
         
     }

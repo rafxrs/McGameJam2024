@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &19806784 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8884592604777246539, guid: 7d8b30f2092d6064ca2bf0be50eac252, type: 3}
+  m_PrefabInstance: {fileID: 1144877614144507135}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &237435214 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6695334871926890732, guid: ad2c0b98f0106d5498cd2fc5be910652, type: 3}
@@ -372,7 +377,7 @@ GameObject:
   - component: {fileID: 502784857}
   - component: {fileID: 502784856}
   - component: {fileID: 502784858}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7628,12 +7633,50 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7195077848047930967, guid: 7d8b30f2092d6064ca2bf0be50eac252, type: 3}
   m_PrefabInstance: {fileID: 1144877614144507135}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 19806784}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c632ccdb09a85d42b6ac392ca57df15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!255 &1955039904
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19806784}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -8.23, y: 0}
+  m_DampingRatio: 0
+  m_Frequency: 0
+--- !u!255 &1955039905
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19806784}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -8.23, y: 0}
+  m_DampingRatio: 0
+  m_Frequency: 0
 --- !u!1 &2066338329
 GameObject:
   m_ObjectHideFlags: 0
@@ -7809,6 +7852,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2433059224920143960, guid: 7d8b30f2092d6064ca2bf0be50eac252, type: 3}
+      propertyPath: m_JumpForce
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433059224920143960, guid: 7d8b30f2092d6064ca2bf0be50eac252, type: 3}
+      propertyPath: m_AirControl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433059224920143960, guid: 7d8b30f2092d6064ca2bf0be50eac252, type: 3}
+      propertyPath: m_WhatIsGround.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 5861540988192475161, guid: 7d8b30f2092d6064ca2bf0be50eac252, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.23
@@ -7856,7 +7911,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8884592604777246539, guid: 7d8b30f2092d6064ca2bf0be50eac252, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1955039905}
+    - targetCorrespondingSourceObject: {fileID: 8884592604777246539, guid: 7d8b30f2092d6064ca2bf0be50eac252, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1955039904}
   m_SourcePrefab: {fileID: 100100000, guid: 7d8b30f2092d6064ca2bf0be50eac252, type: 3}
 --- !u!1001 &5974677836488005497
 PrefabInstance:

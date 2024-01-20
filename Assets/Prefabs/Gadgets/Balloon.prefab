@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4146077607545860800}
   - component: {fileID: 4087463327470770504}
   - component: {fileID: 3918997248660804134}
+  - component: {fileID: 4977606105870307842}
   m_Layer: 0
   m_Name: Balloon
   m_TagString: Untagged
@@ -162,3 +163,16 @@ PolygonCollider2D:
       - {x: 0.07, y: -0.42}
       - {x: 0.08, y: -0.42}
   m_UseDelaunayMesh: 0
+--- !u!114 &4977606105870307842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105323644472231821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e3444ed32e900448fc5565ef2d37a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GadgetScriptableObject: {fileID: 0}

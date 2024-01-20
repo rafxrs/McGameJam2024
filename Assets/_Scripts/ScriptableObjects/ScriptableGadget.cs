@@ -29,6 +29,7 @@ public class ScriptableGadget : ScriptableObject
         public float mass;
         public bool canFly;
         public float airDrag;
+        public float reduceGravity;
         public bool isForBoost;
         public bool isForJump;
         public float jumpForce;

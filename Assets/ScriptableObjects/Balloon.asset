@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0daae2ff39d5ac24c9cf00b8a032be86, type: 3}
-  m_Name: Umbrella
+  m_Name: Balloon
   m_EditorClassIdentifier: 
   gadgetType: 0
   playerLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   _advancedStats:
     mass: 0
     canFly: 1

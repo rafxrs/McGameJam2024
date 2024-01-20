@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0daae2ff39d5ac24c9cf00b8a032be86, type: 3}
-  m_Name: Umbrella
+  m_Name: Wheel
   m_EditorClassIdentifier: 
-  gadgetType: 0
+  gadgetType: 3
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
   _advancedStats:
-    mass: 0
-    canFly: 1
+    mass: 20
+    canFly: 0
     airDrag: 0
     isForBoost: 0
     isForJump: 0

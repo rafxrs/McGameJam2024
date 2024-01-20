@@ -67,23 +67,7 @@ public class GameManager : StaticInstance<GameManager>
         // p for pause
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) 
         {
-            if (isPaused)
-            {
-                // resume game
-                pausePanel.SetActive(false);
-                playerControl = true;
-                Time.timeScale =1;
-                isPaused=false;
-            }
-            else 
-            {
-                // pause the game
-                isPaused = true;
-                playerControl = false;
-                pausePanel.SetActive(true);
-                Time.timeScale =0;
-            }
-            
+            Pause();
         }
         if (isPaused && Input.GetKeyDown(KeyCode.Escape)) 
         {
@@ -152,8 +136,6 @@ public class GameManager : StaticInstance<GameManager>
         {
             playerControl = true;
         }
-        
-        pausePanel.SetActive(false);
         gameOverPanel.SetActive(false);
         levelCompletePanel.SetActive(false);
         createVehiclePanel.SetActive(mustCreateVehicle);
@@ -262,6 +244,26 @@ public class GameManager : StaticInstance<GameManager>
         levelComplete = false;
         string currentScene = SceneManager.GetActiveScene().name;
         LoadLevel(currentScene);
+    }
+
+    public void Pause()
+    {
+        if (isPaused)
+        {
+            // resume game
+            pausePanel.SetActive(false);
+            playerControl = true;
+            Time.timeScale =1;
+            isPaused=false;
+        }
+        else 
+        {
+            // pause the game
+            isPaused = true;
+            playerControl = false;
+            pausePanel.SetActive(true);
+            Time.timeScale =0;
+        }
     }
 //-------------------------------------------------------------------------------------------//
     public void LoadMenu()

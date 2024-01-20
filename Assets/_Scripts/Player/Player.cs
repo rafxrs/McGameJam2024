@@ -14,6 +14,7 @@ namespace _Scripts.Units.Player
         public LayerMask platformLayerMask;
         public CharacterController2D _characterController;
         public GameObject[] gadgets;
+        private UIManager _uiManager;
 
         public GameObject currentlySelectedGadget;
         public int currentlySelectedGadgetNumber;
@@ -26,7 +27,7 @@ namespace _Scripts.Units.Player
         public float adherence;
         
         float _horizontalInput;
-        int _currentHealth;
+        int _currentHealth=100;
         bool _jump;
         bool _isDead;
 
@@ -71,6 +72,7 @@ namespace _Scripts.Units.Player
             bottomPos = transform.Find("Bottom");
 
             rb = GetComponent<Rigidbody2D>();
+            _uiManager = GameObject.Find("Main Canvas").GetComponent<UIManager>();
         }
 
         //-------------------------------------------------------------------------------------------//
@@ -128,10 +130,10 @@ namespace _Scripts.Units.Player
         
         void OnCollisionEnter2D(Collision2D other)
         {
-            // if (other.gameObject.CompareTag("DeathFloor"))
-            // {
-            //     TakeDamage(_playerScriptable.baseStats.maxHealth);
-            // }
+            if (other.gameObject.CompareTag("DeathFloor"))
+            {
+                TakeDamage(100);
+            }
         }
         void OnTriggerEnter2D(Collider2D other)
         {
@@ -157,7 +159,8 @@ namespace _Scripts.Units.Player
         
         void Die()
         {
-            Invoke("GameOverSequence",1.5f);
+            Invoke("GameOverSequence",0.5f);
+            FindObjectOfType<AudioManager>().Play("Death1");
             _isDead = true;
             GetComponent<CharacterController2D>().enabled = false;
             Destroy(this.gameObject, 4f);
@@ -166,14 +169,14 @@ namespace _Scripts.Units.Player
         // UI AND SCORE FUNCTIONS
         //-------------------------------------------------------------------------------------------//
         
-        // void GameOverSequence()
-        // {
-        //     _uiManager.GameOverSequence();
-        // }
-        // public void LevelComplete()
-        // {
-        //     _uiManager.LevelComplete();
-        // }
+        void GameOverSequence()
+        {
+            _uiManager.GameOverSequence();
+        }
+        public void LevelComplete()
+        {
+            _uiManager.LevelComplete();
+        }
 
         public void SelectGadget(int number)
         {
@@ -181,8 +184,6 @@ namespace _Scripts.Units.Player
             currentlySelectedGadget = gadgets[number];
             currentlySelectedGadgetNumber = number;
             Debug.Log("Selected "+currentlySelectedGadget);
-            //TODO
-            // audio manager plays a select sound
             FindObjectOfType<AudioManager>().Play("SelectGadgetSound");
 
         }

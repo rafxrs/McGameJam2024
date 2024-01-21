@@ -18,8 +18,7 @@ MonoBehaviour:
     m_Bits: 64
   _advancedStats:
     mass: 0
-    canFly: 1
+    isPlayer: 1
     airDrag: 0
-    isForBoost: 0
-    isForJump: 0
+    reduceGravity: 0
     jumpForce: 0

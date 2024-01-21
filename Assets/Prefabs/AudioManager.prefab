@@ -148,8 +148,8 @@ MonoBehaviour:
   - name: VictorySound
     clip: {fileID: 8300000, guid: b9a73fa2d7e8d5343913def0433c7669, type: 3}
     volume: 1
-    volumeVariance: 0.24
-    pitch: 0.61
+    volumeVariance: 0.25
+    pitch: 1
     pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}

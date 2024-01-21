@@ -202,7 +202,7 @@ public class GameManager : StaticInstance<GameManager>
         //         break;
         // }
         int currentLevel = SceneManager.GetActiveScene().buildIndex;
-        if (currentLevel + 1 == 5) LoadNextLevel();
+        if (currentLevel + 1 == 7) LoadNextLevel();
         Time.timeScale =0;
         playerControl = false;
         isGameOver = true;

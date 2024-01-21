@@ -41,7 +41,7 @@ public class CameraZoomController : MonoBehaviour
             targetZoom -= scrollData * zoomFactor;
 
             // Clamp the targetZoom to avoid extreme values
-            targetZoom = Mathf.Clamp(targetZoom, 8f, 50f);
+            targetZoom = Mathf.Clamp(targetZoom, 8f, 20f);
 
             // Set the virtual camera's OrthographicSize with smooth interpolation
             virtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(virtualCamera.m_Lens.OrthographicSize, targetZoom, Time.deltaTime * zoomLerpSpeed);

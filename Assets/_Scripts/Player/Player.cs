@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace _Scripts.Units.Player
 {
@@ -25,11 +26,15 @@ namespace _Scripts.Units.Player
         public float speed = 20f;
         public float airDrag = 0f;
         public float adherence;
+
+        public string tag_bomb = "Bomb";
         
         float _horizontalInput;
         int _currentHealth=100;
         bool _jump;
         bool _isDead;
+        public float launchForce = 25f;  // Adjust this value to control the launch force
+
 
         private Transform topPos;
         private Transform topLeftPos;
@@ -54,6 +59,11 @@ namespace _Scripts.Units.Player
         Transform instantiateAt;
         private Vector3 instantiatePos;
 
+        private Vector2 launchDirection;
+
+        private Dictionary<int,string> degree_to_position;
+
+
         //-------------------------------------------------------------------------------------------//
 
 
@@ -73,6 +83,7 @@ namespace _Scripts.Units.Player
 
             rb = GetComponent<Rigidbody2D>();
             _uiManager = GameObject.Find("Main Canvas").GetComponent<UIManager>();
+
         }
 
         //-------------------------------------------------------------------------------------------//
@@ -91,11 +102,91 @@ namespace _Scripts.Units.Player
             }
             else 
             {
-                _horizontalInput =0f;
+                    _horizontalInput =0f;
             }
-        
-        
+
+            if (GameManager.playerControl) 
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    Activate_Bombe();
+                }
+            }
+
         }
+
+
+
+
+        void update_direction(string positionName)
+        {
+            Debug.Log("start" + launchDirection);
+            Vector2 original_direction = Vector2.zero;
+            switch (positionName)
+            {  
+                case "Top Left": original_direction = Vector2.right + Vector2.down; break;
+                case "Top": original_direction = Vector2.down; break;
+                case "Top Right": original_direction = Vector2.left + Vector2.down; break;
+                case "Front": original_direction = Vector2.left; break;
+                case "Middle": original_direction = Vector2.zero; break;
+                case "Back": original_direction = Vector2.right; break;
+                case "Bottom Left": original_direction = Vector2.right + Vector2.up; break;
+                case "Bottom": original_direction = Vector2.up; break;
+                case "Bottom Right": original_direction = Vector2.left + Vector2.up; break;
+                default: original_direction = Vector2.zero; break;
+            }
+            // Une fois qu'on a récupéré la direction supposée on applique la rotation 
+
+
+            Quaternion rotation = transform.rotation;
+            float angleInDegrees = rotation.eulerAngles.z;
+            // Convert the angle to radians
+            float angleInRadians = Mathf.Deg2Rad * angleInDegrees;
+
+            // Modify the Vector2 using the angle
+            Vector2 modifiedVector = RotateVector(original_direction, angleInRadians);
+            launchDirection += modifiedVector;
+            Debug.Log("end" + launchDirection);
+        }
+
+        public static Vector2 RotateVector(Vector2 v, float delta) {
+        return new Vector2(
+            v.x * Mathf.Cos(delta) - v.y * Mathf.Sin(delta),
+            v.x * Mathf.Sin(delta) + v.y * Mathf.Cos(delta)
+        );
+}
+
+        void Activate_Bombe()
+        {
+            launchDirection = Vector2.zero;
+            if(top != null && top.CompareTag(tag_bomb) == true) { update_direction("Top") ; Destroy(top);} 
+            if(topLeft != null && topLeft.CompareTag(tag_bomb) == true)  { update_direction("Top Left" ); Destroy(topLeft);} 
+            if(topRight != null && topRight.CompareTag(tag_bomb) == true) { update_direction("Top Right" ); Destroy(topRight);} 
+            if(front != null && front.CompareTag(tag_bomb) == true) { update_direction("Front"); Destroy(front);} 
+            if(middle != null && middle.CompareTag(tag_bomb) == true) { update_direction("Middle" ); Destroy(middle);} 
+            if(back != null && back.CompareTag(tag_bomb) == true)  { update_direction("Back"); Destroy(back);} 
+            if(bottomRight != null && bottomRight.CompareTag(tag_bomb) == true) { update_direction("Bottom Right"); Destroy(bottomRight);} 
+            if(bottomLeft != null && bottomLeft.CompareTag(tag_bomb) == true) { update_direction("Bottom Left"); Destroy(bottomLeft);} 
+            if(bottom != null && bottom.CompareTag(tag_bomb) == true) { update_direction("Bottom"); Destroy(bottom);} 
+
+            if (launchDirection != Vector2.zero) {
+                Launch_Player();
+            }
+        }
+
+        void Launch_Player()
+        {
+            if (rb != null)
+            {
+                // Apply force to launch the object
+                rb.AddForce(launchDirection * launchForce, ForceMode2D.Impulse);
+            }
+            else {
+                Debug.LogError("Rigidbody2D component not found on the GameObject!");
+            }
+        }
+
+
 
         void FixedUpdate()
         {

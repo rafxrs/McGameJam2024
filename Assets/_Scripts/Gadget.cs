@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts.Units.Player;
 using UnityEngine;
 
 public class Gadget : MonoBehaviour
@@ -28,5 +29,9 @@ public class Gadget : MonoBehaviour
         //     Destroy(fixedjoint);
         //
         // }
+        if (other.gameObject.tag.Equals("DeathFloor"))
+        {
+            GameObject.Find("Player").GetComponent<Player>().TakeDamage(100);
+        }
     }
 }

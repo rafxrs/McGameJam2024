@@ -626,18 +626,15 @@ MonoBehaviour:
   _characterController: {fileID: 2433059224920143960}
   gadgets:
   - {fileID: 5809383387611635251, guid: 0bd2348bed350324790e3f4897922fd3, type: 3}
-  - {fileID: 2715857772548040086, guid: 92f0ca0325a0cd141b9ffc62cf883f13, type: 3}
+  - {fileID: 2582525383493004361, guid: a57b122d0bcc16e4982dd748b7588ce2, type: 3}
   - {fileID: 2715857772548040086, guid: e1c80bcd3aef5e64c90d854f366b16bc, type: 3}
   - {fileID: 4949573692236564952, guid: eaf39a5e6600eeb46b817f486336ae94, type: 3}
-  - {fileID: 2582525383493004361, guid: 3c7df13e39ea14947b9a1a17b707f08c, type: 3}
-  - {fileID: 2715857772548040086, guid: 7c1e73fbe201e3042b57de6fb66a39dc, type: 3}
+  - {fileID: 2582525383493004361, guid: 11d2472c47b1b1c4d8fecbe92372d8dd, type: 3}
   - {fileID: 2582525383493004361, guid: 92f22d1b40d063e44b7714be87264237, type: 3}
   - {fileID: 2582525383493004361, guid: ab96081e7043dc04b8e79e93f4efcac2, type: 3}
   - {fileID: 2715857772548040086, guid: 687ecb7d94c180b439ad1d19d6c08f12, type: 3}
   - {fileID: 2582525383493004361, guid: dddc3108861d9a448b9cd844c5a0edc5, type: 3}
-  - {fileID: 2582525383493004361, guid: dddc3108861d9a448b9cd844c5a0edc5, type: 3}
-  - {fileID: 2582525383493004361, guid: dddc3108861d9a448b9cd844c5a0edc5, type: 3}
-  - {fileID: 2582525383493004361, guid: 11d2472c47b1b1c4d8fecbe92372d8dd, type: 3}
+  - {fileID: 2715857772548040086, guid: 7c1e73fbe201e3042b57de6fb66a39dc, type: 3}
   currentlySelectedGadget: {fileID: 0}
   currentlySelectedGadgetNumber: 0
   mass: 0

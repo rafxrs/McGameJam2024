@@ -17,6 +17,9 @@ namespace _Scripts.Units.Player
         private UIManager _uiManager;
 
         public GameObject currentlySelectedGadget;
+        public GameObject currentlySelectedSlot;
+        public bool isRotateSelected;
+        public bool isRotateRight;
         public int currentlySelectedGadgetNumber;
 
         private Rigidbody2D rb;
@@ -272,9 +275,23 @@ namespace _Scripts.Units.Player
 
         public void SelectGadget(int number)
         {
-
-            currentlySelectedGadget = gadgets[number];
+            
             currentlySelectedGadgetNumber = number;
+            if (number == 10)
+            {
+                isRotateSelected = true;
+                isRotateRight = true;
+            }
+            else if (number == 11)
+            {
+                isRotateSelected = true;
+                isRotateRight = false;
+            }
+            else
+            {
+                currentlySelectedGadget = gadgets[number];
+                isRotateSelected = false;
+            }
             Debug.Log("Selected "+currentlySelectedGadget);
             FindObjectOfType<AudioManager>().Play("SelectGadgetSound");
 
@@ -282,22 +299,26 @@ namespace _Scripts.Units.Player
 
         public void SetGadget(string positionName)
         {
-            if (transform.Find(positionName).childCount > 0) {
-                Destroy(transform.Find(positionName).GetChild(0).gameObject);
-            }
-
+            // Must select gadget
             if (currentlySelectedGadget == null) {
                 Debug.Log("il faut sélectionner un objet à mettre sur la position " + positionName);
                 return;
             }
-
+            // destroy children if not rotating
+            if (!isRotateSelected)
+            {
+                if (transform.Find(positionName).childCount > 0) {
+                    Destroy(transform.Find(positionName).GetChild(0).gameObject);
+                } 
+            }
+            
             switch (currentlySelectedGadgetNumber)
             {
                 case 0:
                     FindObjectOfType<AudioManager>().Play("WoodSound");
                     break;
                 case 1:
-                    FindObjectOfType<AudioManager>().Play("MotorSound");
+                    FindObjectOfType<AudioManager>().Play("WoodSound");
                     break;
                 case 2:
                     FindObjectOfType<AudioManager>().Play("BalloonSound");
@@ -315,180 +336,265 @@ namespace _Scripts.Units.Player
                     FindObjectOfType<AudioManager>().Play("WoodSound");
                     break;
             }
-
+            
             ScriptableGadget currentScriptableGadget =
                 currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject;
+            
             switch (positionName)
             {  
                 case "Top Left":
-                    if (topLeft != null)
+                    if (!isRotateSelected)
                     {
-                        Destroy(topLeft);
-                    }
-                    instantiateAt = topLeftPos;
-                    instantiatePos = instantiateAt.transform.position;
-                    if (currentScriptableGadget.avancedStats.isPlayer)
-                    {
-                        topLeft = Instantiate(currentlySelectedGadget,instantiateAt);
-                        rb.mass += currentScriptableGadget.avancedStats.mass;
+                        if (topLeft != null)
+                        {
+                            Destroy(topLeft);
+                        }
+                        instantiateAt = topLeftPos;
+                        instantiatePos = instantiateAt.transform.position;
+                        if (currentScriptableGadget.avancedStats.isPlayer)
+                        {
+                            topLeft = Instantiate(currentlySelectedGadget,instantiateAt);
+                            rb.mass += currentScriptableGadget.avancedStats.mass;
+                        }
+                        else
+                        {
+                            topLeft =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
+                            Set_Linked(topLeft,positionName);
+                            topLeft.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        }
                     }
                     else
                     {
-                        topLeft =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(topLeft,positionName);
-                        topLeft.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        if (isRotateRight) topLeft.transform.Rotate(new Vector3(0,0,90));
+                        else topLeft.transform.Rotate(new Vector3(0,0,-90));
                     }
+                    
                     break;
                 case "Top":
-                    if (top != null)
+                    if (!isRotateSelected)
                     {
-                        Destroy(top);
-                    }
-                    instantiateAt = topPos;
-                    instantiatePos = instantiateAt.transform.position;
-                    if (currentScriptableGadget.avancedStats.isPlayer)
-                    {
-                        top =Instantiate(currentlySelectedGadget,instantiateAt);
-                        rb.mass += currentScriptableGadget.avancedStats.mass;
+                        if (top != null)
+                        {
+                            Destroy(top);
+                        }
+
+                        instantiateAt = topPos;
+                        instantiatePos = instantiateAt.transform.position;
+                        if (currentScriptableGadget.avancedStats.isPlayer)
+                        {
+                            top = Instantiate(currentlySelectedGadget, instantiateAt);
+                            rb.mass += currentScriptableGadget.avancedStats.mass;
+                        }
+                        else
+                        {
+                            top = Instantiate(currentlySelectedGadget, instantiatePos, Quaternion.identity);
+                            Set_Linked(top, positionName);
+                            top.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        }
                     }
                     else
                     {
-                        top =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(top,positionName);
-                        top.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        if (isRotateRight) top.transform.Rotate(new Vector3(0,0,90));
+                        else top.transform.Rotate(new Vector3(0,0,-90));
                     }
+
                     break;
                 case "Top Right":
-                    if (topRight != null)
+                    if (!isRotateSelected)
                     {
-                        Destroy(topRight);
-                    }
-                    instantiateAt = topRightPos;
-                    instantiatePos = instantiateAt.transform.position;
-                    if (currentScriptableGadget.avancedStats.isPlayer)
-                    {
-                        topRight =Instantiate(currentlySelectedGadget,instantiateAt);
-                        rb.mass += currentScriptableGadget.avancedStats.mass;
+                        if (topRight != null)
+                        {
+                            Destroy(topRight);
+                        }
+
+                        instantiateAt = topRightPos;
+                        instantiatePos = instantiateAt.transform.position;
+                        if (currentScriptableGadget.avancedStats.isPlayer)
+                        {
+                            topRight = Instantiate(currentlySelectedGadget, instantiateAt);
+                            rb.mass += currentScriptableGadget.avancedStats.mass;
+                        }
+                        else
+                        {
+                            topRight = Instantiate(currentlySelectedGadget, instantiatePos, Quaternion.identity);
+                            Set_Linked(topRight, positionName);
+                            topRight.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        }
                     }
                     else
                     {
-                        topRight =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(topRight,positionName);
-                        topRight.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        if (isRotateRight) topRight.transform.Rotate(new Vector3(0,0,90));
+                        else topRight.transform.Rotate(new Vector3(0,0,-90));
                     }
+
                     break;
                 case "Front":
-                    if (front != null)
+                    if (!isRotateSelected)
                     {
-                        Destroy(front);
-                    }
-                    instantiateAt = frontPos;
-                    instantiatePos = instantiateAt.transform.position;
-                    if (currentScriptableGadget.avancedStats.isPlayer)
-                    {
-                        front =Instantiate(currentlySelectedGadget,instantiateAt);
-                        rb.mass += currentScriptableGadget.avancedStats.mass;
+                        if (front != null)
+                        {
+                            Destroy(front);
+                        }
+
+                        instantiateAt = frontPos;
+                        instantiatePos = instantiateAt.transform.position;
+                        if (currentScriptableGadget.avancedStats.isPlayer)
+                        {
+                            front = Instantiate(currentlySelectedGadget, instantiateAt);
+                            rb.mass += currentScriptableGadget.avancedStats.mass;
+                        }
+                        else
+                        {
+                            front = Instantiate(currentlySelectedGadget, instantiatePos, Quaternion.identity);
+                            Set_Linked(front, positionName);
+                            front.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        }
                     }
                     else
                     {
-                        front =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(front,positionName);
-                        front.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        if (isRotateRight) front.transform.Rotate(new Vector3(0,0,90));
+                        else front.transform.Rotate(new Vector3(0,0,-90));
                     }
+
                     break;
                 case "Middle":
-                    if (middle != null)
+                    if (!isRotateSelected)
                     {
-                        Destroy(middle);
-                    }
-                    instantiateAt = middlePos;
-                    instantiatePos = instantiateAt.transform.position;
-                    if (currentScriptableGadget.avancedStats.isPlayer)
-                    {
-                        middle =Instantiate(currentlySelectedGadget,instantiateAt);
-                        rb.mass += currentScriptableGadget.avancedStats.mass;
+                        if (middle != null)
+                        {
+                            Destroy(middle);
+                        }
+
+                        instantiateAt = middlePos;
+                        instantiatePos = instantiateAt.transform.position;
+                        if (currentScriptableGadget.avancedStats.isPlayer)
+                        {
+                            middle = Instantiate(currentlySelectedGadget, instantiateAt);
+                            rb.mass += currentScriptableGadget.avancedStats.mass;
+                        }
+                        else
+                        {
+                            middle = Instantiate(currentlySelectedGadget, instantiatePos, Quaternion.identity);
+                            Set_Linked(middle, positionName);
+                            middle.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        }
                     }
                     else
                     {
-                        middle =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(middle,positionName);
-                        middle.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        if (isRotateRight) middle.transform.Rotate(new Vector3(0,0,90));
+                        else middle.transform.Rotate(new Vector3(0,0,-90));
                     }
                     break;
                 case "Back":
-                    if (back != null)
+                    if (!isRotateSelected)
                     {
-                        Destroy(back);
-                    }
-                    instantiateAt = backPos;
-                    instantiatePos = instantiateAt.transform.position;
-                    if (currentScriptableGadget.avancedStats.isPlayer)
-                    {
-                        back =Instantiate(currentlySelectedGadget,instantiateAt);
-                        rb.mass += currentScriptableGadget.avancedStats.mass;
+                        if (back != null)
+                        {
+                            Destroy(back);
+                        }
+
+                        instantiateAt = backPos;
+                        instantiatePos = instantiateAt.transform.position;
+                        if (currentScriptableGadget.avancedStats.isPlayer)
+                        {
+                            back = Instantiate(currentlySelectedGadget, instantiateAt);
+                            rb.mass += currentScriptableGadget.avancedStats.mass;
+                        }
+                        else
+                        {
+                            back = Instantiate(currentlySelectedGadget, instantiatePos, Quaternion.identity);
+                            Set_Linked(back, positionName);
+                            back.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        }
                     }
                     else
                     {
-                        back =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(back,positionName);
-                        back.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        if (isRotateRight) back.transform.Rotate(new Vector3(0,0,90));
+                        else back.transform.Rotate(new Vector3(0,0,-90));
                     }
                     break;
                 case "Bottom Left":
-                    if (bottomLeft != null)
+                    if (!isRotateSelected)
                     {
-                        Destroy(bottomLeft);
-                    }
-                    instantiateAt = bottomLeftPos;
-                    instantiatePos = instantiateAt.transform.position;
-                    if (currentScriptableGadget.avancedStats.isPlayer)
-                    {
-                        bottomLeft =Instantiate(currentlySelectedGadget,instantiateAt);
-                        rb.mass += currentScriptableGadget.avancedStats.mass;
+                        if (bottomLeft != null)
+                        {
+                            Destroy(bottomLeft);
+                        }
+
+                        instantiateAt = bottomLeftPos;
+                        instantiatePos = instantiateAt.transform.position;
+                        if (currentScriptableGadget.avancedStats.isPlayer)
+                        {
+                            bottomLeft = Instantiate(currentlySelectedGadget, instantiateAt);
+                            rb.mass += currentScriptableGadget.avancedStats.mass;
+                        }
+                        else
+                        {
+                            bottomLeft = Instantiate(currentlySelectedGadget, instantiatePos, Quaternion.identity);
+                            Set_Linked(bottomLeft, positionName);
+                            bottomLeft.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        }
                     }
                     else
                     {
-                        bottomLeft =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(bottomLeft,positionName);
-                        bottomLeft.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        if (isRotateRight) bottomLeft.transform.Rotate(new Vector3(0,0,90));
+                        else bottomLeft.transform.Rotate(new Vector3(0,0,-90));
                     }
                     break;
                 case "Bottom":
-                    if (bottom != null)
+                    if (!isRotateSelected)
                     {
-                        Destroy(bottom);
-                    }
-                    instantiateAt = bottomPos;
-                    instantiatePos = instantiateAt.transform.position;
-                    if (currentScriptableGadget.avancedStats.isPlayer)
-                    {
-                        bottom =Instantiate(currentlySelectedGadget,instantiateAt);
-                        rb.mass += currentScriptableGadget.avancedStats.mass;
+                        if (bottom != null)
+                        {
+                            Destroy(bottom);
+                        }
+
+                        instantiateAt = bottomPos;
+                        instantiatePos = instantiateAt.transform.position;
+                        if (currentScriptableGadget.avancedStats.isPlayer)
+                        {
+                            bottom = Instantiate(currentlySelectedGadget, instantiateAt);
+                            rb.mass += currentScriptableGadget.avancedStats.mass;
+                        }
+                        else
+                        {
+                            bottom = Instantiate(currentlySelectedGadget, instantiatePos, Quaternion.identity);
+                            Set_Linked(bottom, positionName);
+                            bottom.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        }
                     }
                     else
                     {
-                        bottom =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(bottom,positionName);
-                        bottom.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        if (isRotateRight) bottom.transform.Rotate(new Vector3(0,0,90));
+                        else bottom.transform.Rotate(new Vector3(0,0,-90));
                     }
                     break;
                 case "Bottom Right":
-                    if (bottomRight != null)
+                    if (!isRotateSelected)
                     {
-                        Destroy(bottomRight);
-                    }
-                    instantiateAt = bottomRightPos;
-                    instantiatePos = instantiateAt.transform.position;
-                    if (currentScriptableGadget.avancedStats.isPlayer)
-                    {
-                        bottomRight =Instantiate(currentlySelectedGadget,instantiateAt);
-                        rb.mass += currentScriptableGadget.avancedStats.mass;
+                        if (bottomRight != null)
+                        {
+                            Destroy(bottomRight);
+                        }
+
+                        instantiateAt = bottomRightPos;
+                        instantiatePos = instantiateAt.transform.position;
+                        if (currentScriptableGadget.avancedStats.isPlayer)
+                        {
+                            bottomRight = Instantiate(currentlySelectedGadget, instantiateAt);
+                            rb.mass += currentScriptableGadget.avancedStats.mass;
+                        }
+                        else
+                        {
+                            bottomRight = Instantiate(currentlySelectedGadget, instantiatePos, Quaternion.identity);
+                            Set_Linked(bottomRight, positionName);
+                            bottomRight.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        }
                     }
                     else
                     {
-                        bottomRight = Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(bottomRight,positionName);
-                        bottomRight.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        if (isRotateRight) bottomRight.transform.Rotate(new Vector3(0,0,90));
+                        else bottomRight.transform.Rotate(new Vector3(0,0,-90));
                     }
                     break;
                 
@@ -540,6 +646,11 @@ namespace _Scripts.Units.Player
                 FixedJoint2D fixedJoint = object_created_rb.AddComponent<FixedJoint2D>();
                 fixedJoint.connectedBody = rb;
             }
-        } 
+        }
+
+        public void Rotate90()
+        {
+            
+        }
     }
 }

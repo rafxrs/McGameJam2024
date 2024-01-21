@@ -163,7 +163,7 @@ namespace _Scripts.Units.Player
         
         void Die()
         {
-            Invoke("GameOverSequence",0.5f);
+            Invoke("GameOverSequence",0.35f);
             FindObjectOfType<AudioManager>().Play("Death1");
             _isDead = true;
             GetComponent<CharacterController2D>().enabled = false;

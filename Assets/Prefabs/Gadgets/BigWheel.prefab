@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7756652815994434908}
   - component: {fileID: 4040577474614164538}
   m_Layer: 0
-  m_Name: Wheel
+  m_Name: BigWheel
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 2582525383493004361}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1813, y: 0.1613, z: 0}
-  m_LocalScale: {x: 1.911323, y: 1.8480744, z: 1}
+  m_LocalPosition: {x: 0.0348, y: 0.1045, z: 0}
+  m_LocalScale: {x: 1.6734624, y: 1.62128, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,7 +96,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 2582525383493004361}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3e4f0d5be4f6daa42b0a531022a80b8c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -181,7 +181,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 242219ff09ef7294db705c23bc7495bf, type: 2}
+  m_Material: {fileID: 6200000, guid: 3e4f0d5be4f6daa42b0a531022a80b8c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

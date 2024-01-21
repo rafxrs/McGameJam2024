@@ -633,9 +633,12 @@ MonoBehaviour:
   - {fileID: 2582525383493004361, guid: 92f22d1b40d063e44b7714be87264237, type: 3}
   - {fileID: 2582525383493004361, guid: ab96081e7043dc04b8e79e93f4efcac2, type: 3}
   - {fileID: 2715857772548040086, guid: 687ecb7d94c180b439ad1d19d6c08f12, type: 3}
-  - {fileID: 2582525383493004361, guid: dddc3108861d9a448b9cd844c5a0edc5, type: 3}
   - {fileID: 2715857772548040086, guid: 7c1e73fbe201e3042b57de6fb66a39dc, type: 3}
+  - {fileID: 2582525383493004361, guid: 11d2472c47b1b1c4d8fecbe92372d8dd, type: 3}
   currentlySelectedGadget: {fileID: 0}
+  currentlySelectedSlot: {fileID: 0}
+  isRotateSelected: 0
+  isRotateRight: 0
   currentlySelectedGadgetNumber: 0
   mass: 0
   speed: 80

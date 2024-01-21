@@ -15557,7 +15557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9013635527540523561, guid: 1a710f4046317644f966c14f14717444, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.7
+      value: 3.4
       objectReference: {fileID: 0}
     - target: {fileID: 9013635527540523561, guid: 1a710f4046317644f966c14f14717444, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17381,7 +17381,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 127251097419155308, guid: ecf7149040fb7ec43a5db90dcfda4ed3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.99
+      value: 14.3
       objectReference: {fileID: 0}
     - target: {fileID: 2725483474722300405, guid: ecf7149040fb7ec43a5db90dcfda4ed3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17423,17 +17423,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3647640099217754664, guid: ecf7149040fb7ec43a5db90dcfda4ed3, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4749919540073179777, guid: ecf7149040fb7ec43a5db90dcfda4ed3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 90.6
       objectReference: {fileID: 0}
     - target: {fileID: 5672022467127056587, guid: ecf7149040fb7ec43a5db90dcfda4ed3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.3
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 8599540473390002612, guid: ecf7149040fb7ec43a5db90dcfda4ed3, type: 3}
       propertyPath: m_Name
       value: InvisBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 8949052475913033309, guid: ecf7149040fb7ec43a5db90dcfda4ed3, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

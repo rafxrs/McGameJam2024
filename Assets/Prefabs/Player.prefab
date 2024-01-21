@@ -630,16 +630,22 @@ MonoBehaviour:
   - {fileID: 2715857772548040086, guid: e1c80bcd3aef5e64c90d854f366b16bc, type: 3}
   - {fileID: 4949573692236564952, guid: eaf39a5e6600eeb46b817f486336ae94, type: 3}
   - {fileID: 2582525383493004361, guid: 3c7df13e39ea14947b9a1a17b707f08c, type: 3}
+  - {fileID: 2715857772548040086, guid: 7c1e73fbe201e3042b57de6fb66a39dc, type: 3}
   - {fileID: 2582525383493004361, guid: 92f22d1b40d063e44b7714be87264237, type: 3}
   - {fileID: 2582525383493004361, guid: ab96081e7043dc04b8e79e93f4efcac2, type: 3}
   - {fileID: 2715857772548040086, guid: 687ecb7d94c180b439ad1d19d6c08f12, type: 3}
   - {fileID: 2582525383493004361, guid: dddc3108861d9a448b9cd844c5a0edc5, type: 3}
+  - {fileID: 2582525383493004361, guid: dddc3108861d9a448b9cd844c5a0edc5, type: 3}
+  - {fileID: 2582525383493004361, guid: dddc3108861d9a448b9cd844c5a0edc5, type: 3}
+  - {fileID: 2582525383493004361, guid: 11d2472c47b1b1c4d8fecbe92372d8dd, type: 3}
   currentlySelectedGadget: {fileID: 0}
   currentlySelectedGadgetNumber: 0
   mass: 0
   speed: 80
   airDrag: 0
   adherence: 0
+  tag_bomb: Bomb
+  launchForce: 250
 --- !u!50 &8755049163406209922
 Rigidbody2D:
   serializedVersion: 4
@@ -655,7 +661,7 @@ Rigidbody2D:
   m_Mass: 25
   m_LinearDrag: 7
   m_AngularDrag: 1
-  m_GravityScale: 2
+  m_GravityScale: 2.5
   m_Material: {fileID: 6200000, guid: 38755c964072e6e418458ebec9aa7716, type: 2}
   m_IncludeLayers:
     serializedVersion: 2

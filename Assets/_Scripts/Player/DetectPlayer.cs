@@ -50,6 +50,7 @@ public class DetectPlayer : MonoBehaviour
         if (other.tag == "Player")
         {
             playerDetected = true;
+            FindObjectOfType<AudioManager>().Play("VictorySound");
         }
     }
     void OnTriggerExit2D(Collider2D other)
@@ -59,6 +60,7 @@ public class DetectPlayer : MonoBehaviour
         {
             Debug.Log("Player left the collider");
             playerDetected = false;
+            FindObjectOfType<AudioManager>().Play("VictorySound");
         }
     }
 }

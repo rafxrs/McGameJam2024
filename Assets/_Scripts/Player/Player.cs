@@ -335,6 +335,12 @@ namespace _Scripts.Units.Player
                 case 6:
                     FindObjectOfType<AudioManager>().Play("WoodSound");
                     break;
+                case 7:
+                    FindObjectOfType<AudioManager>().Play("SpringSound");
+                    break;
+                case 8:
+                    FindObjectOfType<AudioManager>().Play("TntSound");
+                    break;
             }
             
             ScriptableGadget currentScriptableGadget =

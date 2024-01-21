@@ -168,6 +168,7 @@ public class GameManager : StaticInstance<GameManager>
         Time.timeScale =0;
         isGameOver = true;
         gameOverPanel.SetActive(true);
+        pausePanel.SetActive(true);
     }
 //-------------------------------------------------------------------------------------------//
     public void LevelComplete()

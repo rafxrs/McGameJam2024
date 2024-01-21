@@ -19,14 +19,14 @@ public class Gadget : MonoBehaviour
         
     }
 
-    // void OnCollisionEnter2D(Collision2D other)
-    // {
-    //     if (CompareTag("Balloon"))
-    //     {
-    //         GameObject otherGameObject = other.gameObject;
-    //         FixedJoint2D fixedjoint = GetComponent<FixedJoint2D>();
-    //         Destroy(fixedjoint);
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (CompareTag("Balloon"))
+        {
+            GameObject otherGameObject = other.gameObject;
+            FixedJoint2D fixedjoint = GetComponent<FixedJoint2D>();
+            Destroy(fixedjoint);
 
-    //     }
-    // }
+        }
+    }
 }

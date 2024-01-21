@@ -12,10 +12,14 @@ GameObject:
   - component: {fileID: 4087463327470770504}
   - component: {fileID: 3918997248660804134}
   - component: {fileID: 4977606105870307842}
+<<<<<<< HEAD
   - component: {fileID: 8707858695195290750}
+=======
+  - component: {fileID: -8038425556326813466}
+>>>>>>> 1e4b2c5976a41cff4896e8da0a4e25b1bfe3ae6d
   m_Layer: 0
   m_Name: Balloon
-  m_TagString: Player
+  m_TagString: Balloon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,7 +181,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gadgetScriptableObject: {fileID: 11400000, guid: e8ef5ba2828847346af7012e6cffe527, type: 2}
+<<<<<<< HEAD
 --- !u!50 &8707858695195290750
+=======
+--- !u!50 &-8038425556326813466
+>>>>>>> 1e4b2c5976a41cff4896e8da0a4e25b1bfe3ae6d
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -192,7 +200,11 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
+<<<<<<< HEAD
   m_GravityScale: 1
+=======
+  m_GravityScale: -0.25
+>>>>>>> 1e4b2c5976a41cff4896e8da0a4e25b1bfe3ae6d
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

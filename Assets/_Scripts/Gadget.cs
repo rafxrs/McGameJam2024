@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,5 +17,16 @@ public class Gadget : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (CompareTag("Balloon"))
+        {
+            GameObject otherGameObject = other.gameObject;
+            FixedJoint2D fixedjoint = GetComponent<FixedJoint2D>();
+            Destroy(fixedjoint);
+
+        }
     }
 }

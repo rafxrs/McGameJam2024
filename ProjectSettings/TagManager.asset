@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - DeathFloor
+  - Balloon
   layers:
   - Default
   - TransparentFX

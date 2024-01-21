@@ -35,6 +35,7 @@ namespace _Scripts.Units.Player
         int _currentHealth=100;
         bool _jump;
         bool _isDead;
+        
         public float launchForce = 1500f;  // Adjust this value to control the launch force
 
 

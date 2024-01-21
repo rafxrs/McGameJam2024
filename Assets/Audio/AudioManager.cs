@@ -31,6 +31,7 @@ public class AudioManager : MonoBehaviour
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 		}
+		Play("Theme");
 	}
 
 	public void Play(string sound)
@@ -62,7 +63,7 @@ public class AudioManager : MonoBehaviour
 
 	void Start ()
 	{
-		Play("Theme");
+		
 	}
 
 }

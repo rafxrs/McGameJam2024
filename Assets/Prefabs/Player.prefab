@@ -667,7 +667,7 @@ MonoBehaviour:
   airDrag: 0
   adherence: 0
   tag_bomb: Bomb
-  launchForce: 250
+  launchForce: 1000
 --- !u!50 &8755049163406209922
 Rigidbody2D:
   serializedVersion: 4

@@ -48,7 +48,7 @@ MonoBehaviour:
   sounds:
   - name: Theme
     clip: {fileID: 8300000, guid: ed6177a03fa5b604f8e601a6f59a7dcf, type: 3}
-    volume: 0.65
+    volume: 0.496
     volumeVariance: 0.29
     pitch: 1
     pitchVariance: 0
@@ -57,7 +57,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: WoodSound
     clip: {fileID: 8300000, guid: 209c4279aa43d4fb8836096a3f551779, type: 3}
-    volume: 0.37
+    volume: 0.504
     volumeVariance: 0.19
     pitch: 0.99
     pitchVariance: 0.19
@@ -66,7 +66,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: MotorSound
     clip: {fileID: 8300000, guid: 32cc70fc0d16b4b7eb040b64ac67b2c6, type: 3}
-    volume: 0.29
+    volume: 0.496
     volumeVariance: 0.26
     pitch: 1.41
     pitchVariance: 0.24
@@ -75,7 +75,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: BalloonSound
     clip: {fileID: 8300000, guid: 44d3084d52735467a964c26e2b40573a, type: 3}
-    volume: 0.31
+    volume: 0.565
     volumeVariance: 0.27
     pitch: 0.99
     pitchVariance: 0.34
@@ -84,7 +84,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: UmbrellaSound
     clip: {fileID: 8300000, guid: f0131b8f06e91443db79594d055f0a74, type: 3}
-    volume: 0.5
+    volume: 1
     volumeVariance: 0.32
     pitch: 0.99
     pitchVariance: 0.34
@@ -93,7 +93,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: WheelSound
     clip: {fileID: 8300000, guid: fa6197a26fd714f38a06528241d3ee38, type: 3}
-    volume: 0.15
+    volume: 0.465
     volumeVariance: 0.24
     pitch: 0.61
     pitchVariance: 0.18
@@ -102,7 +102,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: SelectGadgetSound
     clip: {fileID: 8300000, guid: a4f667a704569450e993ded8404f9477, type: 3}
-    volume: 0.33
+    volume: 0.535
     volumeVariance: 0.24
     pitch: 0.61
     pitchVariance: 0.34
@@ -119,11 +119,38 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Death2
-    clip: {fileID: 8300000, guid: 111f7255114c2594194d9f8a072dfc8d, type: 3}
+    clip: {fileID: 8300000, guid: 09d7a454450bd7d45b3dd9562f5f183c, type: 3}
     volume: 0.5
     volumeVariance: 0.24
     pitch: 0.61
     pitchVariance: 0.34
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: TntSound
+    clip: {fileID: 8300000, guid: 62b57109a7be1492493138536d806030, type: 3}
+    volume: 0.511
+    volumeVariance: 0.24
+    pitch: 0.61
+    pitchVariance: 0.34
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: SpringSound
+    clip: {fileID: 8300000, guid: fcf60bb69d5db40dab1bb2d26c461531, type: 3}
+    volume: 1
+    volumeVariance: 0.24
+    pitch: 0.61
+    pitchVariance: 0.035
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: VictorySound
+    clip: {fileID: 8300000, guid: b9a73fa2d7e8d5343913def0433c7669, type: 3}
+    volume: 1
+    volumeVariance: 0.24
+    pitch: 0.61
+    pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}

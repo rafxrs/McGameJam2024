@@ -201,15 +201,13 @@ public class GameManager : StaticInstance<GameManager>
         //     default:
         //         break;
         // }
+        int currentLevel = SceneManager.GetActiveScene().buildIndex;
+        if (currentLevel + 1 == 5) LoadNextLevel();
         Time.timeScale =0;
         playerControl = false;
         isGameOver = true;
         levelComplete = true;
         if (!isGameFinished) levelCompletePanel.SetActive(true);
-        else
-        {
-            SceneManager.LoadScene("End");
-        }
     }
 //-------------------------------------------------------------------------------------------//
     public void Resume()

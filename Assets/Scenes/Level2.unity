@@ -9107,6 +9107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fe007b29c60d84e8aa1ef36b4be5c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGameFinished: 0
   stars: 0
   isGameOver: 0
   isPaused: 0
@@ -10760,6 +10761,14 @@ PrefabInstance:
     - target: {fileID: 6695334871926890732, guid: ad2c0b98f0106d5498cd2fc5be910652, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042453641518283230, guid: ad2c0b98f0106d5498cd2fc5be910652, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 841539420}
+    - target: {fileID: 7042453641518283230, guid: ad2c0b98f0106d5498cd2fc5be910652, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadNextLevel
       objectReference: {fileID: 0}
     - target: {fileID: 7151176710021322928, guid: ad2c0b98f0106d5498cd2fc5be910652, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

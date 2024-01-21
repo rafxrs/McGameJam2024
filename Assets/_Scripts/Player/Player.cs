@@ -159,15 +159,15 @@ namespace _Scripts.Units.Player
         void Activate_Bombe()
         {
             launchDirection = Vector2.zero;
-            if(top != null && top.CompareTag(tag_bomb) == true) { update_direction("Top") ; Destroy(top);} 
-            if(topLeft != null && topLeft.CompareTag(tag_bomb) == true)  { update_direction("Top Left" ); Destroy(topLeft);} 
-            if(topRight != null && topRight.CompareTag(tag_bomb) == true) { update_direction("Top Right" ); Destroy(topRight);} 
-            if(front != null && front.CompareTag(tag_bomb) == true) { update_direction("Front"); Destroy(front);} 
-            if(middle != null && middle.CompareTag(tag_bomb) == true) { update_direction("Middle" ); Destroy(middle);} 
-            if(back != null && back.CompareTag(tag_bomb) == true)  { update_direction("Back"); Destroy(back);} 
-            if(bottomRight != null && bottomRight.CompareTag(tag_bomb) == true) { update_direction("Bottom Right"); Destroy(bottomRight);} 
-            if(bottomLeft != null && bottomLeft.CompareTag(tag_bomb) == true) { update_direction("Bottom Left"); Destroy(bottomLeft);} 
-            if(bottom != null && bottom.CompareTag(tag_bomb) == true) { update_direction("Bottom"); Destroy(bottom);} 
+            if(top != null && top.CompareTag(tag_bomb) == true) { update_direction("Top"); FindObjectOfType<AudioManager>().Play("TntSound"); Destroy(top);} 
+            if(topLeft != null && topLeft.CompareTag(tag_bomb) == true)  { update_direction("Top Left" ); FindObjectOfType<AudioManager>().Play("TntSound"); Destroy(topLeft);} 
+            if(topRight != null && topRight.CompareTag(tag_bomb) == true) { update_direction("Top Right" ); FindObjectOfType<AudioManager>().Play("TntSound"); Destroy(topRight);} 
+            if(front != null && front.CompareTag(tag_bomb) == true) { update_direction("Front"); FindObjectOfType<AudioManager>().Play("TntSound"); Destroy(front);} 
+            if(middle != null && middle.CompareTag(tag_bomb) == true) { update_direction("Middle" ); FindObjectOfType<AudioManager>().Play("TntSound"); Destroy(middle);} 
+            if(back != null && back.CompareTag(tag_bomb) == true)  { update_direction("Back"); FindObjectOfType<AudioManager>().Play("TntSound"); Destroy(back);} 
+            if(bottomRight != null && bottomRight.CompareTag(tag_bomb) == true) { update_direction("Bottom Right"); FindObjectOfType<AudioManager>().Play("TntSound"); Destroy(bottomRight);} 
+            if(bottomLeft != null && bottomLeft.CompareTag(tag_bomb) == true) { update_direction("Bottom Left"); FindObjectOfType<AudioManager>().Play("TntSound"); Destroy(bottomLeft);} 
+            if(bottom != null && bottom.CompareTag(tag_bomb) == true) { update_direction("Bottom"); FindObjectOfType<AudioManager>().Play("TntSound"); Destroy(bottom);} 
 
             if (launchDirection != Vector2.zero) {
                 Launch_Player();
@@ -255,7 +255,13 @@ namespace _Scripts.Units.Player
         void Die()
         {
             Invoke("GameOverSequence",0.35f);
-            FindObjectOfType<AudioManager>().Play("Death1");
+            
+
+            int randomNumber = UnityEngine.Random.Range(0, 2);
+            if (randomNumber == 0)
+            {FindObjectOfType<AudioManager>().Play("Death1");;}
+            else{FindObjectOfType<AudioManager>().Play("Death2");;}
+
             _isDead = true;
             GetComponent<CharacterController2D>().enabled = false;
             Destroy(this.gameObject, 4f);

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DeathFloor
   - Balloon
+  - Bomb
   layers:
   - Default
   - TransparentFX
@@ -48,4 +49,7 @@ TagManager:
     locked: 0
   - name: Front
     uniqueID: 1847458283
+    locked: 0
+  - name: Player
+    uniqueID: 277280883
     locked: 0

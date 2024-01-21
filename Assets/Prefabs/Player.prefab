@@ -542,10 +542,15 @@ MonoBehaviour:
   gadgets:
   - {fileID: 5809383387611635251, guid: 0bd2348bed350324790e3f4897922fd3, type: 3}
   - {fileID: 2715857772548040086, guid: 92f0ca0325a0cd141b9ffc62cf883f13, type: 3}
-  - {fileID: 1105323644472231821, guid: 9b37d18771fc18947966175f51751d10, type: 3}
+  - {fileID: 2715857772548040086, guid: e1c80bcd3aef5e64c90d854f366b16bc, type: 3}
   - {fileID: 4949573692236564952, guid: eaf39a5e6600eeb46b817f486336ae94, type: 3}
   - {fileID: 2582525383493004361, guid: 3c7df13e39ea14947b9a1a17b707f08c, type: 3}
+  - {fileID: 2582525383493004361, guid: 92f22d1b40d063e44b7714be87264237, type: 3}
+  - {fileID: 2582525383493004361, guid: ab96081e7043dc04b8e79e93f4efcac2, type: 3}
+  - {fileID: 2715857772548040086, guid: 687ecb7d94c180b439ad1d19d6c08f12, type: 3}
+  - {fileID: 2582525383493004361, guid: dddc3108861d9a448b9cd844c5a0edc5, type: 3}
   currentlySelectedGadget: {fileID: 0}
+  currentlySelectedGadgetNumber: 0
   mass: 0
   speed: 80
   airDrag: 0
@@ -562,10 +567,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 25
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0.5
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: 38755c964072e6e418458ebec9aa7716, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -606,12 +611,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.2128046
 --- !u!1001 &5017657184528039279
 PrefabInstance:
   m_ObjectHideFlags: 0

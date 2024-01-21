@@ -79,6 +79,7 @@ namespace _Scripts.Units.Player
         // UPDATE
         void Update()
         {
+            
             if (!_isDead)
             {
                 _horizontalInput = Input.GetAxisRaw("Horizontal") *  speed;
@@ -137,7 +138,10 @@ namespace _Scripts.Units.Player
         }
         void OnTriggerEnter2D(Collider2D other)
         {
-            
+            if (other.gameObject.CompareTag("DeathFloor"))
+            {
+                TakeDamage(100);
+            }  
         }
 
         void OnTriggerExit2D(Collider2D other)
@@ -147,7 +151,7 @@ namespace _Scripts.Units.Player
         
 
         //-------------------------------------------------------------------------------------------//
-
+        
         public void TakeDamage(int damage)
         {
             _currentHealth -= damage;
@@ -216,8 +220,16 @@ namespace _Scripts.Units.Player
                 case 4:
                     FindObjectOfType<AudioManager>().Play("WheelSound");
                     break;
+                case 5:
+                    FindObjectOfType<AudioManager>().Play("WoodSound");
+                    break;
+                case 6:
+                    FindObjectOfType<AudioManager>().Play("WoodSound");
+                    break;
             }
-            
+
+            ScriptableGadget currentScriptableGadget =
+                currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject;
             switch (positionName)
             {  
                 case "Top Left":
@@ -227,14 +239,16 @@ namespace _Scripts.Units.Player
                     }
                     instantiateAt = topLeftPos;
                     instantiatePos = instantiateAt.transform.position;
-                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    if (currentScriptableGadget.avancedStats.isPlayer)
                     {
                         topLeft = Instantiate(currentlySelectedGadget,instantiateAt);
+                        rb.mass += currentScriptableGadget.avancedStats.mass;
                     }
                     else
                     {
                         topLeft =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
                         Set_Linked(topLeft);
+                        bottomRight.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
                 case "Top":
@@ -244,14 +258,16 @@ namespace _Scripts.Units.Player
                     }
                     instantiateAt = topPos;
                     instantiatePos = instantiateAt.transform.position;
-                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    if (currentScriptableGadget.avancedStats.isPlayer)
                     {
                         top =Instantiate(currentlySelectedGadget,instantiateAt);
+                        rb.mass += currentScriptableGadget.avancedStats.mass;
                     }
                     else
                     {
                         top =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
                         Set_Linked(top);
+                        top.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
                 case "Top Right":
@@ -261,14 +277,16 @@ namespace _Scripts.Units.Player
                     }
                     instantiateAt = topRightPos;
                     instantiatePos = instantiateAt.transform.position;
-                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    if (currentScriptableGadget.avancedStats.isPlayer)
                     {
                         topRight =Instantiate(currentlySelectedGadget,instantiateAt);
+                        rb.mass += currentScriptableGadget.avancedStats.mass;
                     }
                     else
                     {
                         topRight =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
                         Set_Linked(topRight);
+                        topRight.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
                 case "Front":
@@ -278,14 +296,16 @@ namespace _Scripts.Units.Player
                     }
                     instantiateAt = frontPos;
                     instantiatePos = instantiateAt.transform.position;
-                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    if (currentScriptableGadget.avancedStats.isPlayer)
                     {
                         front =Instantiate(currentlySelectedGadget,instantiateAt);
+                        rb.mass += currentScriptableGadget.avancedStats.mass;
                     }
                     else
                     {
                         front =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
                         Set_Linked(front);
+                        front.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
                 case "Middle":
@@ -295,14 +315,16 @@ namespace _Scripts.Units.Player
                     }
                     instantiateAt = middlePos;
                     instantiatePos = instantiateAt.transform.position;
-                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    if (currentScriptableGadget.avancedStats.isPlayer)
                     {
                         middle =Instantiate(currentlySelectedGadget,instantiateAt);
+                        rb.mass += currentScriptableGadget.avancedStats.mass;
                     }
                     else
                     {
                         middle =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
                         Set_Linked(middle);
+                        middle.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
                 case "Back":
@@ -312,14 +334,16 @@ namespace _Scripts.Units.Player
                     }
                     instantiateAt = backPos;
                     instantiatePos = instantiateAt.transform.position;
-                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    if (currentScriptableGadget.avancedStats.isPlayer)
                     {
                         back =Instantiate(currentlySelectedGadget,instantiateAt);
+                        rb.mass += currentScriptableGadget.avancedStats.mass;
                     }
                     else
                     {
                         back =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
                         Set_Linked(back);
+                        back.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
                 case "Bottom Left":
@@ -329,14 +353,16 @@ namespace _Scripts.Units.Player
                     }
                     instantiateAt = bottomLeftPos;
                     instantiatePos = instantiateAt.transform.position;
-                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    if (currentScriptableGadget.avancedStats.isPlayer)
                     {
                         bottomLeft =Instantiate(currentlySelectedGadget,instantiateAt);
+                        rb.mass += currentScriptableGadget.avancedStats.mass;
                     }
                     else
                     {
                         bottomLeft =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
                         Set_Linked(bottomLeft);
+                        bottomLeft.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
                 case "Bottom":
@@ -346,14 +372,16 @@ namespace _Scripts.Units.Player
                     }
                     instantiateAt = bottomPos;
                     instantiatePos = instantiateAt.transform.position;
-                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    if (currentScriptableGadget.avancedStats.isPlayer)
                     {
                         bottom =Instantiate(currentlySelectedGadget,instantiateAt);
+                        rb.mass += currentScriptableGadget.avancedStats.mass;
                     }
                     else
                     {
                         bottom =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
                         Set_Linked(bottom);
+                        bottom.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
                 case "Bottom Right":
@@ -363,16 +391,19 @@ namespace _Scripts.Units.Player
                     }
                     instantiateAt = bottomRightPos;
                     instantiatePos = instantiateAt.transform.position;
-                    if (currentlySelectedGadget.GetComponent<Gadget>().gadgetScriptableObject.avancedStats.isPlayer)
+                    if (currentScriptableGadget.avancedStats.isPlayer)
                     {
                         bottomRight =Instantiate(currentlySelectedGadget,instantiateAt);
+                        rb.mass += currentScriptableGadget.avancedStats.mass;
                     }
                     else
                     {
                         bottomRight = Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
                         Set_Linked(bottomRight);
+                        bottomRight.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
+                
             }  
         } 
 

@@ -1,7 +1,6 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
-using System.Collections.Generic;
 
 namespace _Scripts.Units.Player
 {
@@ -33,7 +32,7 @@ namespace _Scripts.Units.Player
         int _currentHealth=100;
         bool _jump;
         bool _isDead;
-        public float launchForce = 25f;  // Adjust this value to control the launch force
+        public float launchForce = 100f;  // Adjust this value to control the launch force
 
 
         private Transform topPos;
@@ -60,8 +59,6 @@ namespace _Scripts.Units.Player
         private Vector3 instantiatePos;
 
         private Vector2 launchDirection;
-
-        private Dictionary<int,string> degree_to_position;
 
 
         //-------------------------------------------------------------------------------------------//
@@ -338,8 +335,8 @@ namespace _Scripts.Units.Player
                     else
                     {
                         topLeft =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(topLeft);
-                        bottomRight.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
+                        Set_Linked(topLeft,positionName);
+                        topLeft.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
                 case "Top":
@@ -357,7 +354,7 @@ namespace _Scripts.Units.Player
                     else
                     {
                         top =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(top);
+                        Set_Linked(top,positionName);
                         top.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
@@ -376,7 +373,7 @@ namespace _Scripts.Units.Player
                     else
                     {
                         topRight =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(topRight);
+                        Set_Linked(topRight,positionName);
                         topRight.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
@@ -395,7 +392,7 @@ namespace _Scripts.Units.Player
                     else
                     {
                         front =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(front);
+                        Set_Linked(front,positionName);
                         front.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
@@ -414,7 +411,7 @@ namespace _Scripts.Units.Player
                     else
                     {
                         middle =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(middle);
+                        Set_Linked(middle,positionName);
                         middle.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
@@ -433,7 +430,7 @@ namespace _Scripts.Units.Player
                     else
                     {
                         back =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(back);
+                        Set_Linked(back,positionName);
                         back.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
@@ -452,7 +449,7 @@ namespace _Scripts.Units.Player
                     else
                     {
                         bottomLeft =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(bottomLeft);
+                        Set_Linked(bottomLeft,positionName);
                         bottomLeft.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
@@ -471,7 +468,7 @@ namespace _Scripts.Units.Player
                     else
                     {
                         bottom =Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(bottom);
+                        Set_Linked(bottom,positionName);
                         bottom.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
@@ -490,7 +487,7 @@ namespace _Scripts.Units.Player
                     else
                     {
                         bottomRight = Instantiate(currentlySelectedGadget,instantiatePos, Quaternion.identity);
-                        Set_Linked(bottomRight);
+                        Set_Linked(bottomRight,positionName);
                         bottomRight.GetComponent<Rigidbody2D>().mass = currentScriptableGadget.avancedStats.mass;
                     }
                     break;
@@ -498,7 +495,7 @@ namespace _Scripts.Units.Player
             }  
         } 
 
-        void Set_Linked(GameObject object_created)
+        void Set_Linked(GameObject object_created, string positionName)
         {
             if (object_created == null) {
                 Debug.LogError("Set_Linked : object_created shouldn't be null");
@@ -510,9 +507,39 @@ namespace _Scripts.Units.Player
                 return;
             }
 
-            FixedJoint2D fixedJoint = object_created_rb.AddComponent<FixedJoint2D>();
-            // Connect the FixedJoint2D to the second GameObject's Rigidbody2D
-            fixedJoint.connectedBody = rb;
+            if (object_created.name.Contains("BigWheel")) 
+            {
+                WheelJoint2D wheelJoint = object_created_rb.AddComponent<WheelJoint2D>();
+                wheelJoint.connectedBody = rb;
+                
+                Vector2 original_direction = Vector2.zero;
+                switch (positionName)
+                {  
+                    case "Top Left": original_direction = Vector2.left + Vector2.up; break;
+                    case "Top": original_direction = Vector2.up; break;
+                    case "Top Right": original_direction = Vector2.right + Vector2.up; break;
+                    case "Front": original_direction = Vector2.right; break;
+                    case "Middle": original_direction = Vector2.zero; break;
+                    case "Back": original_direction = Vector2.left; break;
+                    case "Bottom Left": original_direction = Vector2.left + Vector2.down; break;
+                    case "Bottom": original_direction = Vector2.down; break;
+                    case "Bottom Right": original_direction = Vector2.right + Vector2.down; break;
+                    default: original_direction = Vector2.zero; break;
+                }
+                // Set the updated connectedAnchor
+                wheelJoint.connectedAnchor = original_direction;
+
+                DistanceJoint2D distanceJoint = object_created_rb.AddComponent<DistanceJoint2D>();
+                distanceJoint.connectedBody = rb;
+        
+                // Set the maximum distance for the DistanceJoint2D based on the original direction
+                distanceJoint.distance = original_direction.magnitude * 0.8f;
+
+            } 
+            else {
+                FixedJoint2D fixedJoint = object_created_rb.AddComponent<FixedJoint2D>();
+                fixedJoint.connectedBody = rb;
+            }
         } 
     }
 }

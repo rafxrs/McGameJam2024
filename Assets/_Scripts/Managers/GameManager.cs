@@ -11,6 +11,7 @@ public class GameManager : StaticInstance<GameManager>
 //-------------------------------------------------------------------------------------------//
     public static event Action<GameState> OnBeforeStateChanged;
     public static event Action<GameState> OnAfterStateChanged;
+    public bool isGameFinished = false;
 
     public int stars = 0;
     public bool isGameOver = false;
@@ -204,7 +205,11 @@ public class GameManager : StaticInstance<GameManager>
         playerControl = false;
         isGameOver = true;
         levelComplete = true;
-        levelCompletePanel.SetActive(true);
+        if (!isGameFinished) levelCompletePanel.SetActive(true);
+        else
+        {
+            SceneManager.LoadScene("End");
+        }
     }
 //-------------------------------------------------------------------------------------------//
     public void Resume()

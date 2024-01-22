@@ -39,27 +39,13 @@ public class DetectPlayer : MonoBehaviour
     [System.Serializable]
     public enum Action
     {
-        Tutorial,
         EndOfLevel,
-        Lever,
-        Teleport,
-
     }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
             playerDetected = true;
-            FindObjectOfType<AudioManager>().Play("VictorySound");
-        }
-    }
-    void OnTriggerExit2D(Collider2D other)
-    {
-        
-        if (other.tag == "Player")
-        {
-            Debug.Log("Player left the collider");
-            playerDetected = false;
             FindObjectOfType<AudioManager>().Play("VictorySound");
         }
     }

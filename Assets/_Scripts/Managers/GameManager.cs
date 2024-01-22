@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using System;
 using _Scripts.Units.Player;
 
@@ -11,21 +8,19 @@ public class GameManager : StaticInstance<GameManager>
 //-------------------------------------------------------------------------------------------//
     public static event Action<GameState> OnBeforeStateChanged;
     public static event Action<GameState> OnAfterStateChanged;
-    public bool isGameFinished = false;
+    public bool isGameFinished;
 
-    public int stars = 0;
-    public bool isGameOver = false;
-    public bool isPaused = false;
-    public bool levelComplete = false;
-    public bool mustCreateVehicle = false;
-    public static bool playerControl = false;
+    public bool isGameOver;
+    public bool isPaused;
+    public bool levelComplete;
+    public bool mustCreateVehicle;
+    public static bool PlayerControl;
 
     public GameObject pausePanel;
     public GameObject gameOverPanel;
     public GameObject createVehiclePanel;
     public GameObject selectGadgetPanel;
     public GameObject levelCompletePanel;
-    public GameObject[] Stars = new GameObject[3];
     Player player;
     public GameState State { get; private set; }
 //-------------------------------------------------------------------------------------------//
@@ -54,29 +49,18 @@ public class GameManager : StaticInstance<GameManager>
             LoadNextLevel();
         }
         //if r key is pressed restart scene
-        if (Input.GetKeyDown(KeyCode.R) && (isGameOver || isPaused))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             Restart();
-            
-        }
-        // m for menu
-        if (Input.GetKeyDown(KeyCode.M) && isGameOver) 
-        {
-            SceneManager.LoadScene(0); // main menu
         }
         // p for pause
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) 
         {
             Pause();
         }
-        if (isPaused && Input.GetKeyDown(KeyCode.Escape)) 
+        else if (isPaused && Input.GetKeyDown(KeyCode.Escape)) 
         {
             Application.Quit();
-            // SceneManager.LoadScene(0);
-        }
-        if (createVehiclePanel.activeSelf)
-        {
-            
         }
     }
 //-------------------------------------------------------------------------------------------//
@@ -119,22 +103,15 @@ public class GameManager : StaticInstance<GameManager>
         {
             Debug.LogError("Player is null");
         }
-        // Do some start setup, could be environment, cinematics etc
-
-        // reset stars GFX
-        // foreach (GameObject obj in Stars)
-        // {
-        //     obj.SetActive(false);
-        // }
 
         if (mustCreateVehicle)
         {
-            playerControl = false;
+            PlayerControl = false;
             Time.timeScale = 0;
         }
         else 
         {
-            playerControl = true;
+            PlayerControl = true;
         }
         gameOverPanel.SetActive(false);
         levelCompletePanel.SetActive(false);
@@ -146,65 +123,32 @@ public class GameManager : StaticInstance<GameManager>
     }
 //-------------------------------------------------------------------------------------------//
     private void HandleSpawningHeroes() {
-        // UnitManager.Instance.SpawnEnemies();
-        
         ChangeState(GameState.SpawningEnemies);
     }
     private void HandleSpawningEnemies() {
-        
-        // Spawn enemies
-        
         ChangeState(GameState.HeroTurn);
     }
 //-------------------------------------------------------------------------------------------//
     private void HandleHeroTurn() {
-        // If you're making a turn based game, this could show the turn menu, highlight available units etc
-        
-        // Keep track of how many units need to make a move, once they've all finished, change the state. This could
-        // be monitored in the unit manager or the units themselves.
+
     }
 //-------------------------------------------------------------------------------------------//
     public void GameOver()
     {
         Time.timeScale =0;
         isGameOver = true;
-        
         gameOverPanel.SetActive(true);
         pausePanel.SetActive(true);
+        // make resume button invisible when dying
+        pausePanel.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
     }
 //-------------------------------------------------------------------------------------------//
     public void LevelComplete()
     {
-        // stars =1;
-        // if (player.coins >= 100)
-        // {
-        //     stars+=1;
-        // }
-        // if (!player.tookDamage)
-        // {
-        //     stars +=1;
-        // }
-        // switch (stars)
-        // {
-        //     case 1:
-        //         Stars[0].SetActive(true);
-        //         break;
-        //     case 2:
-        //         Stars[0].SetActive(true);
-        //         Stars[1].SetActive(true);
-        //         break;
-        //     case 3:
-        //         Stars[0].SetActive(true);
-        //         Stars[1].SetActive(true);
-        //         Stars[2].SetActive(true);
-        //         break;
-        //     default:
-        //         break;
-        // }
         int currentLevel = SceneManager.GetActiveScene().buildIndex;
         if (currentLevel + 1 == 7) LoadNextLevel();
         Time.timeScale =0;
-        playerControl = false;
+        PlayerControl = false;
         isGameOver = true;
         levelComplete = true;
         if (!isGameFinished) levelCompletePanel.SetActive(true);
@@ -216,16 +160,17 @@ public class GameManager : StaticInstance<GameManager>
         createVehiclePanel.SetActive(false);
         selectGadgetPanel.SetActive(false);
         pausePanel.SetActive(false);
+        pausePanel.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
         isPaused=false;
         Time.timeScale =1;
     }
     public void EnablePlayerControl()
     {
-        playerControl = true;
+        PlayerControl = true;
     }
     public void DisablePlayerControl()
     {
-        playerControl = false;
+        PlayerControl = false;
     }
 //-------------------------------------------------------------------------------------------//
     public void LoadLevel(string level)
@@ -255,7 +200,7 @@ public class GameManager : StaticInstance<GameManager>
         {
             // resume game
             pausePanel.SetActive(false);
-            playerControl = true;
+            PlayerControl = true;
             Time.timeScale =1;
             isPaused=false;
         }
@@ -263,7 +208,7 @@ public class GameManager : StaticInstance<GameManager>
         {
             // pause the game
             isPaused = true;
-            playerControl = false;
+            PlayerControl = false;
             pausePanel.SetActive(true);
             Time.timeScale =0;
         }

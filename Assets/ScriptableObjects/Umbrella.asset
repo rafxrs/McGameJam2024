@@ -17,7 +17,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _advancedStats:
-    mass: 30
+    mass: 10
     isPlayer: 0
     airDrag: 0
     reduceGravity: 0

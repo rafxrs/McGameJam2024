@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDetected: 0
-  action: 1
+  action: 0
   doActionOn: {fileID: 0}
 --- !u!1 &7756684115933437676
 GameObject:

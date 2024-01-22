@@ -29739,7 +29739,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGameFinished: 0
-  stars: 0
   isGameOver: 0
   isPaused: 0
   levelComplete: 0
@@ -29749,10 +29748,6 @@ MonoBehaviour:
   createVehiclePanel: {fileID: 255718223838145362}
   selectGadgetPanel: {fileID: 7456393596941717627}
   levelCompletePanel: {fileID: 96770461999873182}
-  Stars:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &848429779
 GameObject:
   m_ObjectHideFlags: 0
@@ -30509,26 +30504,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1951021465 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7412801263681327725, guid: 8d1fdc71ccff0f445b5fee3233050545, type: 3}
-  m_PrefabInstance: {fileID: 210415480631392481}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1951021468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1951021465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68ea6da0f98c68f478d28d630a7d33d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerDetected: 0
-  action: 1
-  doActionOn: {fileID: 0}
 --- !u!4 &1955039897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5861540988192475161, guid: 7d8b30f2092d6064ca2bf0be50eac252, type: 3}
@@ -31119,6 +31094,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 993554535}
     m_Modifications:
+    - target: {fileID: 2741271978556542236, guid: 8d1fdc71ccff0f445b5fee3233050545, type: 3}
+      propertyPath: action
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6782953428526931681, guid: 8d1fdc71ccff0f445b5fee3233050545, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29.08
@@ -31166,10 +31145,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7412801263681327725, guid: 8d1fdc71ccff0f445b5fee3233050545, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1951021468}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d1fdc71ccff0f445b5fee3233050545, type: 3}
 --- !u!4 &210415480631392482 stripped
 Transform:
